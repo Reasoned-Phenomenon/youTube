@@ -1,0 +1,2 @@
+SELECT * FROM aaa;
+safasf
