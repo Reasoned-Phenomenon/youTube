@@ -1,1 +1,8 @@
-SELECT * FROM aaa;
+CREATE TABLE home (
+num number(2) primary key,
+author varchar2(100),
+title varchar2(100),
+like_it varchar2(100),
+time date,
+view number(100)
+);

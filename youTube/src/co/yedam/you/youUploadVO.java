@@ -1,6 +1,6 @@
 package co.yedam.you;
 
-public class youStorageVO {
+public class youUploadVO {
 
 	int id;
 	

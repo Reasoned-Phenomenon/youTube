@@ -2,17 +2,19 @@ package co.yedam.you;
 
 public class youHomeVO {
 
-	int id;
+	String num;
 	String author;
 	String title;
 	String likeIt;
 	String time;
+	String view;
 	
-	public int getId() {
-		return id;
+	
+	public String getNum() {
+		return num;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setNum(String num) {
+		this.num = num;
 	}
 	public String getAuthor() {
 		return author;

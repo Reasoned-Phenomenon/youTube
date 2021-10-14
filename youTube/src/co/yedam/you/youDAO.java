@@ -24,10 +24,10 @@ public class youDAO extends DAO {
 			
 			if (rs.next()) {
 				
-				vo.setId(rs.getInt("id"));
+				vo.setNum(rs.getString("num"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setTitle(rs.getString("title"));
-				vo.setLikeIt(rs.getString("likeIt"));
+				vo.setLikeIt(rs.getString("like_it"));
 				vo.setTime(rs.getString("time"));
 				
 			}
