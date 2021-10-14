@@ -1,6 +1,6 @@
 package co.yedam.you;
 
-public class youtubeDAO {
+public class youDAO {
 
 	
 }
