@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../template/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/plyr.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html">
+                            <img src="../template/img/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li><a href="./index.html">Homepage</a></li>
+                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        <li><a href="./categories.html">Categories</a></li>
+                                        <li><a href="./anime-details.html">Anime Details</a></li>
+                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                        <li><a href="./signup.html">Sign Up</a></li>
+                                        <li><a href="./login.html">Login</a></li>
+                                    </ul>
+                                </li>
+                                <li class="active"><a href="./blog.html">Our Blog</a></li>
+                                <li><a href="#">Contacts</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__right">
+                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                        <a href="./login.html"><span class="icon_profile"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Blog Details Section Begin -->
+    <section class="blog-details spad">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+
+                <!-- <div class="col-lg-8">
+                </div> -->
+                <script>
+               
+
+                </script>
+
+                <!-- 업로드 폼 -->
+                <div class="col-lg-12">
+                    <div class="blog__details__form">
+                        <img src="https://res.cloudinary.com/dtutqsucw/image/upload/v1438955603/file-upload-01.png">
+                        <h4>Select Thumb And Upload Video</h4>
+                        <form id ="frm" method="post" enctype="multipart/form-data" onsubmit="submitAction(event)">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <input type="text" placeholder="Title">
+                                </div>
+                                    
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <button class="site-btn" onclick="thInp();">Thumb nail</button>
+                                    <input type="file" id="thInp" style="display: none;">
+                                    <button class="site-btn" onclick="viInp();">Video</button> <br>
+                                    <input type="file" id="viInp" style="display: none;">
+                                    <hr>
+                                    <button type="submit" class="site-btn">Upload</button>
+                                </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- <div class="col-lg-8">
+                </div> -->
+
+            </div>
+        </section>
+        <!-- Blog Details Section End -->
+
+        <!-- Footer Section Begin -->
+        <footer class="footer">
+            <div class="page-up">
+                <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="footer__logo">
+                            <a href="./index.html"><img src="../template/img/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer__nav">
+                            <ul>
+                                <li class="active"><a href="./index.html">Homepage</a></li>
+                                <li><a href="./categories.html">Categories</a></li>
+                                <li><a href="./blog.html">Our Blog</a></li>
+                                <li><a href="#">Contacts</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+
+                      </div>
+                  </div>
+              </div>
+          </footer>
+          <!-- Footer Section End -->
+
+          <!-- Search model Begin -->
+          <div class="search-model">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <div class="search-close-switch"><i class="icon_close"></i></div>
+                <form class="search-model-form">
+                    <input type="text" id="search-input" placeholder="Search here.....">
+                </form>
+            </div>
+        </div>
+        <!-- Search model end -->
+
+        <!-- Js Plugins -->
+        <script src="../template/js/jquery-3.3.1.min.js"></script>
+        <script src="../template/js/bootstrap.min.js"></script>
+        <script src="../template/js/player.js"></script>
+        <script src="../template/js/jquery.nice-select.min.js"></script>
+        <script src="../template/js/mixitup.min.js"></script>
+        <script src="../template/js/jquery.slicknav.js"></script>
+        <script src="../template/js/owl.carousel.min.js"></script>
+        
+
+        <script>
+
+            function thInp () {
+                console.log('thinp');
+                $('#thInp').click();
+            }
+        
+            function viInp () {
+                console.log('viinp');
+                $('#viInp').click();
+            }
+
+
+
+            let data;
+            //작성자, 제목 받아서 실행.
+            function uploadVideo() {
+
+            $.ajax({
+                url: '../youHomeServlet',
+                type: 'get', //post로 바꿔야할지도...
+                dataType: 'json',
+                success: function (result) {
+                console.log(result);
+                data = result;
+                
+                for ( let row of result ) {
+                    
+                }
+                
+                },
+                error:function () {
+                    console.log('error');
+                }
+            });
+    
+
+    //섬네일
+
+    //영상
+
+}
+        
+
+        function submitAction (ev) {
+            //가지고 오는 값 : title
+            // 회원가입 -> 작성자
+            ev.preventDefault();
+            let frm = document.getElementById('frm');
+            let inputData = new FormData(frm);
+            console.log(inputData);
+            $.ajax({
+                url: '../youHomeServlet',
+                type: $('#frm').attr('method'),
+                data: 'cmd=upload',
+                //{
+                //     'cmd=upload'
+                //     //inputData
+                // },
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function (result) {
+                    alert('성공');
+                    console.log(result);
+                    
+
+                    //입력했던 값을 지우도록.
+                    $('#frm>input').not('[type="submit"]').val('');
+                },
+                error: function () {
+                    alert('실패');
+                }
+            });
+        }
+
+
+        </script>
+
+        <script src="../template/js/main.js"></script>
+    </body>
+
+    </html>

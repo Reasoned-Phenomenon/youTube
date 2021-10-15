@@ -1,7 +1,7 @@
---���̺� ����
+--테이블 삭제
 DROP table home;
 
---���̺� ����
+--테이블 생성
 CREATE TABLE home (
 num number(10) primary key,
 author varchar2(100),
@@ -15,7 +15,9 @@ comment_cnt number(10)
 
 SELECT * FROM home;
 
---�ʱⰪ
+--초기값---------------번호 / 작성자 / 제목 / 좋아요수 / 업로드날짜 / 시청수 / 댓글수
+----------------------자동부여 / 작성자 / 제목 / 0 / sysdate / 0 / 0 
+------------------ num / author / title / like_it / upload_date / view_num / comment_cnt
 INSERT INTO home VALUES(1,'author1','title1',100,sysdate,10,1);
 INSERT INTO home VALUES(2,'author2','title2',200,sysdate,20,2);
 INSERT INTO home VALUES(3,'author3','title3',300,sysdate,30,3);

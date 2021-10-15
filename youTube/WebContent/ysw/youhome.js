@@ -30,8 +30,14 @@ function trendigNow () {
 // ----------------------------------------
 
 
-//gif 파일 업로드
+// 파일 업로드
 function gifUpload() {
     
 }
+
+
+    
+    
+
+
 
