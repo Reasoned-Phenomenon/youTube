@@ -13,25 +13,26 @@ public class youDAO extends DAO {
 		connect();
 		
 		List<youHomeVO> list = new ArrayList<>();
-		String sql = "SELECT * FROM home";
+		String sql = "SELECT * FROM home ORDER BY 1";
 		
 		try {
-			
-			youHomeVO vo = new youHomeVO();
 			
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
-			if (rs.next()) {
+			while ( rs.next() ) {
 				
-				vo.setNum(rs.getString("num"));
+				youHomeVO vo = new youHomeVO();
+				vo.setNum(rs.getInt("num"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setTitle(rs.getString("title"));
-				vo.setLikeIt(rs.getString("like_it"));
-				vo.setTime(rs.getString("time"));
+				vo.setLikeIt(rs.getInt("like_it"));
+				vo.setUploadDate(rs.getString("upload_date"));
+				vo.setViewNum(rs.getInt("view_num"));
+				vo.setCommentCnt(rs.getInt("comment_cnt"));
 				
+				list.add(vo);
 			}
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

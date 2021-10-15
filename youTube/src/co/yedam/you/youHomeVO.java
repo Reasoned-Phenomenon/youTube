@@ -2,18 +2,18 @@ package co.yedam.you;
 
 public class youHomeVO {
 
-	String num;
+	int num;
 	String author;
 	String title;
-	String likeIt;
-	String time;
-	String view;
+	int likeIt;
+	String uploadDate;
+	int viewNum;
+	int commentCnt;
 	
-	
-	public String getNum() {
+	public int getNum() {
 		return num;
 	}
-	public void setNum(String num) {
+	public void setNum(int num) {
 		this.num = num;
 	}
 	public String getAuthor() {
@@ -28,18 +28,35 @@ public class youHomeVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getLikeIt() {
+	public int getLikeIt() {
 		return likeIt;
 	}
-	public void setLikeIt(String likeIt) {
+	public void setLikeIt(int likeIt) {
 		this.likeIt = likeIt;
 	}
-	public String getTime() {
-		return time;
+	public String getUploadDate() {
+		return uploadDate;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setUploadDate(String uploadDate) {
+		this.uploadDate = uploadDate;
 	}
+	public int getViewNum() {
+		return viewNum;
+	}
+	public void setViewNum(int viewNum) {
+		this.viewNum = viewNum;
+	}
+	public int getCommentCnt() {
+		return commentCnt;
+	}
+	public void setCommentCnt(int commentCnt) {
+		this.commentCnt = commentCnt;
+	}
+	
+	
+	
+	
+
 	
 	
 	

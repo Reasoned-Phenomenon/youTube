@@ -146,102 +146,14 @@
                         </div>
                         <!--트렌딩 영상 6개 섬네일 + gif 구하기-->
                         <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-1.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-2.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-3.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Shingeki no Kyojin Season 3 Part 2</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-4.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Fullmetal Alchemist: Brotherhood</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-5.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Shiratorizawa Gakuen Koukou</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-6.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Code Geass: Hangyaku no Lelouch R2</a></h5>
-                                    </div>
-                                </div>
-                            </div>
+                            
+
+
+
+
+
+
+
                         </div>
                     </div>
                     
@@ -356,77 +268,96 @@
 
 <script>
     
+    let data;
+
+    function topViews (home) {
+        
+        //생성
+            //sm6
+        let sm6 = $('<div />').addClass('col-lg-4 col-md-6 col-sm-6');
+
+            //pi
+            let pi = $('<div />').addClass('product__item');
+                //bg
+                let bg = $('<div />').addClass('product__item__pic set-bg');
+                    $(bg).attr('data-setbg',"../template/img/trending/trend-1.jpg");
+                    let ep = $('<div />').addClass('ep');
+                    let comment = $('<div />').addClass('comment');
+                        let ic = $('<i />').addClass('fa fa-comments'); 
+                        $(ic).html(home.commentCnt);//댓글수
+                    let view = $('<div />').addClass('view');
+                        let iv = $('<i />').addClass('fa fa-eye').html(home.viewNum); //조회수
 
 
+                //pit
+                let pit = $('<div />').addClass('product__item__text');
+                    let ul = $('<ul />').append(
+                        $('<li />').html('대분류'), //분류1
+                        $('<li />').html('소분류') //분류2
+                    );
+                    let h5 = $('<h5 />').append(
+                        $('<a />').attr('href', '../template/'+home.title+'.mp4').html(home.title) //영상 주소,제목 넣기
+                    );
 
+        //구조
+        $(sm6).append(
 
+            $(pi).append(
 
-function topViews () {
-    //생성
-    let sm6 = $('<div />').addClass('col-lg-4 col-md-6 col-sm-6');
-    let pi = $('<div />').addClass('product__item');
-    let bg = $('<div />').addClass('product__item__pic set-bg');
-    $(bg).attr('data-setbg',"../template/img/trending/trend-1.jpg");
+                $(bg).append(
+                    ep,
+                    $(comment).append(ic),
+                    $(view).append(iv),
+                ),
+
+                $(pit).append(ul, h5)
+            )
+        );
+        
+        //$('.trending__product').children()[1].append(sm6);
+        $('.trending__product').children().eq(1).append(sm6);
+
+    }
+
     
-    let ep = $('<div />').addClass('ep');
-    let comment = $('<div />').addClass('comment');
-    let view = $('<div />').addClass('view');
+
+    $.ajax({
+            url:'../youHomeServlet',
+            data:'cmd=list',
+            dataType:'json',
+            success: function (result) {
+
+                data = result;
+
+                for ( let datum of result) {
+                    topViews(datum);
+                }
+
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+    });
     
-    let ic = $('<i />').addClass('fa fa-comments').html(); //댓글수
-    let iv = $('<i />').addClass('fa fa-eye').html(); //조회수
-
-    $(comment).append(ic);
-    $(view).append(iv);
-    $(bg).append(
-        $(ep),
-        $(comment),
-        $(view),
-    );
-
-    let ul = $('<ul />').append(
-        $('</li />').html(), //분류1
-        $('</li />').html() //분류2
-    );
-    $(pit).append(ul)
-
-    let h5 = $('<h5 />').append(
-        $('<a />').attr('href', '#').html() //영상 주소,제목 넣기
-    );
+    //$(document).ready(topViews(data));
 
 
-    let pit = $('<div />').addClass('product__item__text');
-
-    //구조
-    $(sm6).append(
-        $(pi).append(
-            $(bg),
-            $(pit)
-        )
-    );
-
-    $('#row').eq(8).append(sm6);
-}
-
-
-
-
-
-<div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="../template/img/trending/trend-1.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                    </div>
-                                </div>
-                            </div>
+    // <div class="col-lg-4 col-md-6 col-sm-6">
+    //                             <div class="product__item">
+    //                                 <div class="product__item__pic set-bg" data-setbg="../template/img/trending/trend-1.jpg">
+    //                                     <div class="ep">18 / 18</div>
+    //                                     <div class="comment"><i class="fa fa-comments"></i> 11</div>
+    //                                     <div class="view"><i class="fa fa-eye"></i> 9141</div>
+    //                                 </div>
+    //                                 <div class="product__item__text">
+    //                                     <ul>
+    //                                         <li>Active</li>
+    //                                         <li>Movie</li>
+    //                                     </ul>
+    //                                     <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
 
 
 

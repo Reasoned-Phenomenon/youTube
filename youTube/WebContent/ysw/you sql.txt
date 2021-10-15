@@ -1,8 +1,26 @@
+--테이블 삭제
+DROP table home;
+
+--테이블 생성
 CREATE TABLE home (
-num number(2) primary key,
+num number(10) primary key,
 author varchar2(100),
 title varchar2(100),
-like_it varchar2(100),
-time date,
-view number(100)
+like_it number(10),
+upload_date date,
+view_num number(10),
+comment_cnt number(10)
 );
+
+
+SELECT * FROM home;
+
+--초기값
+INSERT INTO home VALUES(1,'author1','title1',100,sysdate,10,1);
+INSERT INTO home VALUES(2,'author2','title2',200,sysdate,20,2);
+INSERT INTO home VALUES(3,'author3','title3',300,sysdate,30,3);
+INSERT INTO home VALUES(4,'author4','title4',400,sysdate,40,4);
+INSERT INTO home VALUES(5,'author5','title5',500,sysdate,50,5);
+
+
+COMMIT;
