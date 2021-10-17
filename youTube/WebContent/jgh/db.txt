@@ -1,0 +1,44 @@
+<댓글테이블 첫번째>
+---------테이블 3번째---------
+create table comment2 (
+ num number primary key, -- 댓글 순서번호.
+ id varchar2(100),       -- 아이디.
+ content varchar2(300),  -- 댓글내용.
+ day date                -- 댓글 작성 날짜.
+);
+insert into comment2 values (1 , 'chris Curry', 'Very good' , sysdate) ;
+insert into comment2 values (2 , 'Lewis Mann', 'Finally it came out ages ago' , sysdate) ;
+insert into comment2 values (3 , 'Louis Tyler', 'Where is the episode 15?' , sysdate) ;
+
+
+select *from comment2;
+
+drop table comment2 ;
+
+--------------------------------
+첫번재 테이블생성과 두번째 테이블 생성
+
+--------------------------------
+
+
+<댓글테이블 두번째>
+-------테이블 댓글 생성-------
+create table commentboard (
+ num number primary key,  -- 댓글 순서번호.
+ id varchar2(100),        -- 아이디.
+ content varchar2(300),   -- 댓글내용.
+ day date                 -- 댓글 작성 날짜. + 시간까지  ex) 2021.10.15.15:00 이렇게 나올 수 있게
+);
+
+select nvl(max(num),0)+1 from commentboard;
+select max(num)from commentboard;
+insert into commentboard values((select nvl(max(num),0)+1 from commentboard),'chris Curry','Very good',sysdate);
+select * from commentboard;
+
+delete from commentboard
+where num >=2;
+
+drop table commentboard;
+
+-------------------------------------
+
