@@ -5,6 +5,8 @@ public class youHomeVO {
 	int num;
 	String author;
 	String title;
+	String tnTitle;
+	String viTitle;
 	int likeIt;
 	String uploadDate;
 	int viewNum;
@@ -27,6 +29,18 @@ public class youHomeVO {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getTnTitle() {
+		return tnTitle;
+	}
+	public void setTnTitle(String tnTitle) {
+		this.tnTitle = tnTitle;
+	}
+	public String getViTitle() {
+		return viTitle;
+	}
+	public void setViTitle(String viTitle) {
+		this.viTitle = viTitle;
 	}
 	public int getLikeIt() {
 		return likeIt;

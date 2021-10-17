@@ -87,21 +87,17 @@
                         <h4>Select Thumb And Upload Video</h4>
                         <form id ="frm" method="post" enctype="multipart/form-data" onsubmit="submitAction(event)">
 
-                            <div class="row">
-
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <input id="titleInput" type="text" placeholder="Title" >
-                                </div>
-                                    
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    
-                                    <input class="site-btn" type="file" id="thInp" value="Thumb Nail">
-                                    <br>
-                                    <input class="site-btn" type="file" id="viInp" value="Video">
-                                    <hr>
-                                    <button type="submit" class="site-btn">Upload</button>
-                                </div>
-
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <input id="titleInput" type="text" placeholder="Title" >
+                            </div>
+                                
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                
+                                <input class="site-btn" type="file" id="thInp" value="Thumb Nail">
+                                <br>
+                                <input class="site-btn" type="file" id="viInp" value="Video">
+                                <hr>
+                                <button type="submit" class="site-btn">Upload</button>
                             </div>
 
                         </form>
@@ -169,63 +165,34 @@
         <script>
 
             let data;
-            //작성자, 제목 받아서 실행.
-        function uploadVideo() {
-
-            $.ajax({
-                url: '../youHomeServlet',
-                type: 'get', //post로 바꿔야할지도...
-                dataType: 'json',
-                success: function (result) {
-                console.log(result);
-                data = result;
-                
-                for ( let row of result ) {
-                    
-                }
-                
-                },
-                error:function () {
-                    console.log('error');
-                }
-            });
-    
-
-    //섬네일
-
-    //영상
-
-}
-        
 
         function submitAction (ev) {
             //가지고 오는 값 : title
             // 회원가입 -> 작성자
             ev.preventDefault();
-
-            let frm = document.getElementById('frm');
-            let inputData = new FormData(frm);
-            console.log(inputData);
+            var frm = new FormData();
             
-            // inputData += '?cmd=upload';
-            // let authorInput = '111'; //로그인 연동시 변경
-            // let titleInput = $('#titleInput').html();
-            // let fileInput = 
-            // console.log(titleInput)
-            // let param = '?cmd=upload'+'&title='+titleInput+'&author='+;
+            let ti = document.getElementById('titleInput').value;
+
+            frm.append('author','sw');
+            frm.append('title', ti );
+            
+            frm.append('tn',document.getElementById('thInp').files[0]);
+            frm.append('vi',document.getElementById('viInp').files[0]);
             
             $.ajax({
                 url: '../youUploadServlet',
                 type: $('#frm').attr('method'),
-                data: inputData,
+                data: frm,
                 processData: false,
                 contentType: false,
                 dataType: 'json',
                 success: function (result) {
                     console.log(result);
+                    // 입력칸 비우기
+                    $('#frm>input').val();
 
-                    //입력했던 값을 지우도록.
-                    //$('#frm>input').not('[type="submit"]').val('');
+                    alert(result.title+' 업로드 성공');
                 },
                 error: function () {
                     alert('실패');
