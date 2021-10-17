@@ -42,9 +42,10 @@ public class youUploadServlet extends HttpServlet {
 		
 		String author = multi.getParameter("author");
 		String title = multi.getParameter("title");
-		String file = multi.getFilesystemName("file");
+		String tn = multi.getFilesystemName("tn");
+		String vi = multi.getFilesystemName("vi");
 		
-		youHomeVO vo = dao.uploadFile(author, title, file);
+		youHomeVO vo = dao.uploadFile(author,title,tn, vi);
 		response.getWriter().println( gson.toJson(vo) );
 		
 		System.out.println(saveDir);

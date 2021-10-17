@@ -13,7 +13,7 @@ public class youDAO extends DAO {
 		connect();
 		
 		List<youHomeVO> list = new ArrayList<>();
-		String sql = "SELECT * FROM home ORDER BY 4";
+		String sql = "SELECT * FROM home ORDER BY 6 DESC";
 		
 		try {
 			
@@ -26,6 +26,8 @@ public class youDAO extends DAO {
 				vo.setNum(rs.getInt("num"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setTitle(rs.getString("title"));
+				vo.setTnTitle(rs.getString("tn_title"));
+				vo.setViTitle(rs.getString("vi_title"));
 				vo.setLikeIt(rs.getInt("like_it"));
 				vo.setUploadDate(rs.getString("upload_date"));
 				vo.setViewNum(rs.getInt("view_num"));
@@ -47,7 +49,7 @@ public class youDAO extends DAO {
 	
 	//파일 업로그 처리.
 	//서블릿에서 파일 업로드, db저장.
-	public youHomeVO uploadFile(String author, String title, String file) {
+	public youHomeVO uploadFile(String author, String title, String tnTitle, String viTitle) {
 		
 		connect();
 		
@@ -61,12 +63,14 @@ public class youDAO extends DAO {
 				nextNum = rs.getInt(1);
 			}
 			
-			String sql = "INSERT INTO home VALUES(?,?,?,0,sysdate,0,0)";
+			String sql = "INSERT INTO home VALUES(?,?,?,?,?,0,sysdate,0,0)";
 			
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, nextNum);
 			psmt.setString(2, author);
 			psmt.setString(3, title);
+			psmt.setString(4, tnTitle);
+			psmt.setString(5, viTitle);
 			
 			int r = psmt.executeUpdate();
 			System.out.println(r+"건 입력.");
@@ -75,6 +79,8 @@ public class youDAO extends DAO {
 			vo.setNum(nextNum);
 			vo.setAuthor(author);
 			vo.setTitle(title);
+			vo.setTnTitle(tnTitle);
+			vo.setViTitle(viTitle);
 			
 			return vo;
 			
