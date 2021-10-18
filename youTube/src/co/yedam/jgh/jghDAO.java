@@ -67,7 +67,7 @@ public class jghDAO extends DAO {
 		    psmt = conn.prepareStatement("select day from commentboard where=?"); 
 		    psmt.setInt(1, curNum);
 		    
-		    rs = psmt.executeQuery(); // 에러 확인해보기!.
+		    rs = psmt.executeQuery(); // 에러 확인해보기!!..
 		    String lastDay = null;
 		    if ( rs.next() ) {
 		       lastDay = rs.getString("day");
