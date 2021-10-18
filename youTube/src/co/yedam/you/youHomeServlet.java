@@ -33,6 +33,7 @@ public class youHomeServlet extends HttpServlet {
 		youDAO dao = new youDAO();
 			
 		List<youHomeVO> list = dao.showList();
+		System.out.println(list);
 		out.println(gson.toJson(list));
 			
 	}

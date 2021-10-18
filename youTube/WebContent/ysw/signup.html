@@ -95,7 +95,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                <!-- 로그인 폼 -->
                     <div class="login__form">
                         <h3>Sign Up</h3>
                         <form action="#">
@@ -111,12 +110,12 @@
                                 <input type="text" placeholder="Password">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn" id="signUpBtn" onclick="signUp(event)">Login Now</button>
+                            <button type="submit" class="site-btn">Login Now</button>
                         </form>
                         <h5>Already have an account? <a href="#">Log In!</a></h5>
                     </div>
                 </div>
-                <!-- api부분 제외
+                <!-- api 사용 제외
                 <div class="col-lg-6">
                     <div class="login__social__links">
                         <h3>Login With:</h3>
@@ -128,7 +127,7 @@
                         </ul>
                     </div>
                 </div>
-                 -->
+                -->
             </div>
         </div>
     </section>
@@ -187,51 +186,6 @@
     <script src="../template/js/jquery.slicknav.js"></script>
     <script src="../template/js/owl.carousel.min.js"></script>
     <script src="../template/js/main.js"></script>
-    
-    <script>
-    function signUp (e) {
-    	
-    	e.preventDefault();
-    	
-    	let email = $('.input__item input').eq(0).val();
-    	let name = $('.input__item input').eq(1).val();
-    	let pw = $('.input__item input').eq(2).val();
-    	
-		console.log(name);
-    	if (email == '') {
-            alert('이메일 주소를 입력하세요.');
-            return;
-        }
-        if (name == '') {
-            alert('이름을 입력하세요.');
-            return;
-        }
-        if (pw == '') {
-            alert('비밀번호를 입력하세요.');
-            return;
-        }
-
-    	let xhtp = new XMLHttpRequest();
-        xhtp.onload = function (result) {
-            console.log(result);
-            if ( result.errCode == "err") {
-                alert('중복된 이메일 주소입니다.');
-            } else {
-                let data = JSON.parse(xhtp.responseText);
-                console.log(data);
-                alert('회원가입을 환영합니다.');
-            }
-            
-			$('.input__item input').val('');
-        }
-        xhtp.open('post','../youSignupServlet');
-        xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhtp.send('email='+email+'&name='+name+'&pw='+pw);
-
-    }
-    	
-    
-    </script>
 
 </body>
 

@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-@WebServlet("/youSignupServlet")
-public class youSignupServlet extends HttpServlet {
+@WebServlet("/youSigninServlet")
+public class youSigninServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public youSignupServlet() {
+    public youSigninServlet() {
         super();
     }
 
@@ -30,19 +30,19 @@ public class youSignupServlet extends HttpServlet {
 		Gson gson = new GsonBuilder().create();
 		
 		String email = request.getParameter("email");
-		String author = request.getParameter("name"); //이름 -> 작성자
-		String pw = request.getParameter("pw");
-
+		String pw = request.getParameter("pw"); //이름 -> 작성자
+		
 		youDAO dao = new youDAO();
-		youClientVO vo = new youClientVO();
+		String code = null;
 		
-		vo = dao.signUp(email,author,pw);
-		
-		if ( vo == null) {
-			String end = "{\"errCode\":\"err\"}";
-			out.println(gson.toJson(end));
+		if (dao.signIn(email, pw)) {
+			 code = "{\"code\":\"success\"}";
+		} else {
+			 code = "{\"code\":\"fail\"}";
 		}
-		out.println(gson.toJson(vo));
+		System.out.println(code);
+		out.println(gson.toJson(code));
+		
 		
 	}
 

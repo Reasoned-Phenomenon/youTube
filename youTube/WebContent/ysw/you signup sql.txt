@@ -12,9 +12,9 @@ pw varchar2(100)
 --초기값------------ email / user_num / author / pw 
 ------------------ 이메일 / 회원번호 / 작성자 / 비밀번호
 ------------------ 
-INSERT INTO home VALUES('email1@email.com',1,'author1','pw1');
-INSERT INTO home VALUES('email2@email.com',2,'author2','pw2');
-INSERT INTO home VALUES('email3@email.com',3,'author3','pw3');
+INSERT INTO client VALUES('email1@email.com',1,'author1','pw1');
+INSERT INTO client VALUES('email2@email.com',2,'author2','pw2');
+INSERT INTO client VALUES('email3@email.com',3,'author3','pw3');
 
 
 COMMIT;

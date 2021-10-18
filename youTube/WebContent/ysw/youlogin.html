@@ -7,7 +7,7 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yoo | Tube</title>
+    <title>You | Tube</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -81,8 +81,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="normal__breadcrumb__text">
-                        <h2>Sign Up</h2>
-                        <p>Welcome to Yoo Tube.</p>
+                        <h2>Login</h2>
+                        <p>Welcome to the official Anime blog.</p>
                     </div>
                 </div>
             </div>
@@ -90,49 +90,57 @@
     </section>
     <!-- Normal Breadcrumb End -->
 
-    <!-- Signup Section Begin -->
-    <section class="signup spad">
+    <!-- Login Section Begin -->
+    <section class="login spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                <!-- 로그인 폼 -->
                     <div class="login__form">
-                        <h3>Sign Up</h3>
+                        <h3>Login</h3>
                         <form action="#">
                             <div class="input__item">
                                 <input type="text" placeholder="Email address">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Your Name">
-                                <span class="icon_profile"></span>
-                            </div>
-                            <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="password" placeholder="Password">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn" id="signUpBtn" onclick="signUp(event)">Login Now</button>
+                            <button type="submit" class="site-btn" onclick="logIn(event)">Login Now</button>
                         </form>
-                        <h5>Already have an account? <a href="#">Log In!</a></h5>
+                        <!-- 비밀번호 찾기 제외
+                        <a href="#" class="forget_pass">Forgot Your Password?</a>
+                        -->
                     </div>
                 </div>
-                <!-- api부분 제외
                 <div class="col-lg-6">
-                    <div class="login__social__links">
-                        <h3>Login With:</h3>
-                        <ul>
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
-                            </li>
-                            <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a></li>
-                        </ul>
+                    <div class="login__register">
+                        <h3>Dont’t Have An Account?</h3>
+                        <a href="#" class="primary-btn">Register Now</a>
                     </div>
                 </div>
-                 -->
+            </div>
+            <div class="login__social">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6">
+                        <!-- 소셜 로그인 제외
+                        <div class="login__social__links">
+                            <span>or</span>
+                            <ul>
+                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With
+                                Facebook</a></li>
+                                <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
+                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
+                                </li>
+                            </ul>
+                        </div>
+                        -->
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <!-- Signup Section End -->
+    <!-- Login Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer">
@@ -167,6 +175,7 @@
       </footer>
       <!-- Footer Section End -->
 
+      <!-- 업로드 폼으로 바꾸는 것도 괜찮을 것 같음 -->
       <!-- Search model Begin -->
       <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
@@ -187,52 +196,43 @@
     <script src="../template/js/jquery.slicknav.js"></script>
     <script src="../template/js/owl.carousel.min.js"></script>
     <script src="../template/js/main.js"></script>
-    
+
+
     <script>
-    function signUp (e) {
-    	
-    	e.preventDefault();
-    	
-    	let email = $('.input__item input').eq(0).val();
-    	let name = $('.input__item input').eq(1).val();
-    	let pw = $('.input__item input').eq(2).val();
-    	
-		console.log(name);
-    	if (email == '') {
-            alert('이메일 주소를 입력하세요.');
-            return;
-        }
-        if (name == '') {
-            alert('이름을 입력하세요.');
-            return;
-        }
-        if (pw == '') {
-            alert('비밀번호를 입력하세요.');
-            return;
-        }
+        function logIn (e) {
 
-    	let xhtp = new XMLHttpRequest();
-        xhtp.onload = function (result) {
-            console.log(result);
-            if ( result.errCode == "err") {
-                alert('중복된 이메일 주소입니다.');
-            } else {
-                let data = JSON.parse(xhtp.responseText);
-                console.log(data);
-                alert('회원가입을 환영합니다.');
-            }
-            
-			$('.input__item input').val('');
-        }
-        xhtp.open('post','../youSignupServlet');
-        xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhtp.send('email='+email+'&name='+name+'&pw='+pw);
-
-    }
+            e.preventDefault();
     	
-    
+            let email = $('.input__item input').eq(0).val();
+            let pw = $('.input__item input').eq(1).val();
+
+            let param = 'email='+email+'&pw='+pw;
+
+            $.ajax({
+                url:'../youSigninServlet',
+                type: 'post',
+                data: param,
+                dataType: 'json',
+                success: function(result) {
+                	console.log(result);
+                	console.log(result.code);
+                    if(result.code = "success") {
+                        alert("로그인 성공");
+                        $('.input__item input').val('');
+                    } else {
+                        alert("로그인 실패");
+                    }
+                },
+                error: function (reject) {
+                    console.log(reject);
+                }
+            });
+
+
+
+
+        }
     </script>
-
 </body>
 
 </html>
