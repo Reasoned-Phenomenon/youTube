@@ -163,8 +163,8 @@
                         </div>
                         <form action="#">
                             <textarea placeholder="Your Comment"></textarea>
-                            <button onclick="textA()"></button>
-                            <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                            
+                            <button type="submit" onclick="textA(event)"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>
                 </div>
@@ -256,6 +256,7 @@
 	   
 	   let span = document.createElement('span');
 	   span.innerText = comment.day;
+	   console.log(span);
 	   
 	   
 	   
@@ -273,14 +274,13 @@
 	   outDiv.appendChild(innerDiv);
 	   
 	   
-	   
-	   
 	   return outDiv;
    } 
  
    let xhtp = new XMLHttpRequest();
    xhtp.open('get', '../jghCannelServlet');
    xhtp.send();
+  
    xhtp.onload = function() {
 	   let data = JSON.parse(xhtp.responseText);
 	   console.log(data);
@@ -294,12 +294,38 @@
 	   }
    };
    
-   function textA () {
-	  
+   function textA (event) {
+	   event.preventDefault;
 	   let comment = document.getElementsByTagName('textarea')[0].value;
 	   console.log(comment);
 	   
+	   let userId = "jgh";  // 나중에 아이디값이랑 같이 넘기기.
+	   let param = "id="+userId+"&content="+comment;
+	   
+	   $.ajax({
+		   url:'../jghaddServlet',
+		   data: param,   
+		   type:'get',
+		   dataType:'json',
+		   success: function (result) {
+			   console.log("성공");
+			   
+			   let commentDiv = makeCommentDiv(result);
+			   console.log(commentDiv);
+			  
+			   $('.anime__details__review').append(commentDiv);
+			   
+			   
+		   },
+		   error: function (reject){
+			   console.log("실패");
+		   }
+	   });
+	   
+	   
    }
+   
+   
  </script>
  
 </body>

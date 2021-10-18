@@ -166,8 +166,6 @@
                     
                 </div>
 
-
-
                 <!-- 사이드 / top view 부분-->
                 <div class="col-lg-4 col-md-6 col-sm-8">
                     <div class="product__sidebar">
@@ -273,7 +271,6 @@
 </div>
 <!-- Search model end -->
 
-
 <!-- Js Plugins -->
 <script src="../template/js/jquery-3.3.1.min.js"></script>
 <script src="../template/js/bootstrap.min.js"></script>
@@ -283,7 +280,7 @@
 <script src="../template/js/jquery.slicknav.js"></script>
 <script src="../template/js/owl.carousel.min.js"></script>
 <script src="youhome.js"></script>
-<script src="youUpload.js"></script>
+
 
 
 <script>
@@ -291,14 +288,14 @@
 
     $.ajax({
         url:'../youHomeServlet',
-        data:'cmd=list',
         dataType:'json',
         success: function (result) {
 
             data = result;
 
             for ( let datum of result) {
-                topViews(datum);
+            	trendingNow(datum);
+                //topView(datum);
             }
 
         },
@@ -307,8 +304,7 @@
         }
     });
 
-    function topViews (home) {
-        console.log('111');
+    function trendingNow (home) {
     //생성
         //sm6
      let sm6 = $('<div />').addClass('col-lg-4 col-md-6 col-sm-6');
@@ -327,7 +323,6 @@
                     $(ic).html(home.commentCnt);                                        //댓글수
                 let view = $('<div />').addClass('view');
                     let iv = $('<i />').addClass('fa fa-eye').html(home.viewNum);        //조회수
-
 
             //pit
             let pit = $('<div />').addClass('product__item__text');
@@ -354,47 +349,64 @@
         )
     );
     
-    //$('.trending__product').children()[1].append(sm6);
     $('.trending__product').children().eq(1).append(sm6);
 
 }
 
 
+function topView (home) {
+    //생성
+        //sm6
+     let sm6 = $('<div />').addClass('col-lg-4 col-md-6 col-sm-6');
 
+        //pi
+        let pi = $('<div />').addClass('product__item');
+            //bg
+            let bg = $('<div />').addClass('product__item__pic set-bg');
+                $(bg).attr('data-setbg',"../template/thumbnail/"+home.title+".jpg"); // 섬네일-main.js에서 일괄적용.
+                $(bg).css('background-image', 'url(../template/thumbnail/'+home.title+'.jpg)'); // 섬네일(수동)
+                //$(bg).html('<a href="'+'#'+'"></a>');             //영상페이지 주소 넣어서 영상클릭시에도 이동하게하기
+                let ep = $('<div />').addClass('ep');
+                    ep.html('10/10');                                                   //회차정보, 임의로 넣어둠
+                let comment = $('<div />').addClass('comment');
+                    let ic = $('<i />').addClass('fa fa-comments'); 
+                    $(ic).html(home.commentCnt);                                        //댓글수
+                let view = $('<div />').addClass('view');
+                    let iv = $('<i />').addClass('fa fa-eye').html(home.viewNum);        //조회수
 
-//$(document).ready(topViews(data));
+            //pit
+            let pit = $('<div />').addClass('product__item__text');
+                let ul = $('<ul />').append(
+                    $('<li />').html('대분류'),                                             //분류1
+                    $('<li />').html('소분류')                                              //분류2
+                );
+                let h5 = $('<h5 />').append(
+                    $('<a />').attr('href', '#').html(home.title)               //영상페이지 주소,제목 넣기
+                );
 
+    //구조
+    $(sm6).append(
 
-// <div class="col-lg-4 col-md-6 col-sm-6">
-//                             <div class="product__item">
-//                                 <div class="product__item__pic set-bg" data-setbg="../template/img/trending/trend-1.jpg">
-//                                     <div class="ep">18 / 18</div>
-//                                     <div class="comment"><i class="fa fa-comments"></i> 11</div>
-//                                     <div class="view"><i class="fa fa-eye"></i> 9141</div>
-//                                 </div>
-//                                 <div class="product__item__text">
-//                                     <ul>
-//                                         <li>Active</li>
-//                                         <li>Movie</li>
-//                                     </ul>
-//                                     <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-//                                 </div>
-//                             </div>
-//                         </div>
+        $(pi).append(
 
+            $(bg).append(
+                ep,
+                $(comment).append(ic),
+                $(view).append(iv)
+            ),
 
+            $(pit).append(ul, h5)
+        )
+    );
+    
+    $('.trending__product').children().eq(1).append(sm6);
+
+}
 
 
 </script>
 
-
-
-
-
-
-
 <script src="../template/js/main.js"></script>
-
 
 </body>
 

@@ -2,7 +2,6 @@ package co.yedam.you;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-@WebServlet("/youHomeServlet")
-public class youHomeServlet extends HttpServlet {
+@WebServlet("/youSignupServlet")
+public class youSignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public youHomeServlet() {
+    public youSignupServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -30,12 +29,21 @@ public class youHomeServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Gson gson = new GsonBuilder().create();
 		
+		String email = request.getParameter("email");
+		String author = request.getParameter("name"); //이름 -> 작성자
+		String pw = request.getParameter("pw");
+
 		youDAO dao = new youDAO();
-			
-		List<youHomeVO> list = dao.showList();
-		System.out.println(list);
-		out.println(gson.toJson(list));
-			
+		youClientVO vo = new youClientVO();
+		
+		vo = dao.signUp(email,author,pw);
+		
+		if ( vo == null) {
+			String end = "{\"errCode\":\"err\"}";
+			out.println(gson.toJson(end));
+		}
+		out.println(gson.toJson(vo));
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
