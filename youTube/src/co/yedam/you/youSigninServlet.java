@@ -36,7 +36,7 @@ public class youSigninServlet extends HttpServlet {
 		String code = null;
 		
 		if (dao.signIn(email, pw)) {
-			 code = "{\"code\":\"success\"}";
+			 code = "{\"code\":\"success\",\"email\":\""+email+"\"}";
 		} else {
 			 code = "{\"code\":\"fail\"}";
 		}
