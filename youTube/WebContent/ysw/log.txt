@@ -19,7 +19,7 @@ homepage -> 영상 섬네일 클릭 -> 영상page
 
 homepage ->
 
-storage ->
+upload ->
 
 
 

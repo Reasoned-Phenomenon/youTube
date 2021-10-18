@@ -2,17 +2,21 @@ package co.yedam.you;
 
 public class youHomeVO {
 
-	int id;
+	int num;
 	String author;
 	String title;
-	String likeIt;
-	String time;
+	String tnTitle;
+	String viTitle;
+	int likeIt;
+	String uploadDate;
+	int viewNum;
+	int commentCnt;
 	
-	public int getId() {
-		return id;
+	public int getNum() {
+		return num;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setNum(int num) {
+		this.num = num;
 	}
 	public String getAuthor() {
 		return author;
@@ -26,18 +30,47 @@ public class youHomeVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getLikeIt() {
+	public String getTnTitle() {
+		return tnTitle;
+	}
+	public void setTnTitle(String tnTitle) {
+		this.tnTitle = tnTitle;
+	}
+	public String getViTitle() {
+		return viTitle;
+	}
+	public void setViTitle(String viTitle) {
+		this.viTitle = viTitle;
+	}
+	public int getLikeIt() {
 		return likeIt;
 	}
-	public void setLikeIt(String likeIt) {
+	public void setLikeIt(int likeIt) {
 		this.likeIt = likeIt;
 	}
-	public String getTime() {
-		return time;
+	public String getUploadDate() {
+		return uploadDate;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setUploadDate(String uploadDate) {
+		this.uploadDate = uploadDate;
 	}
+	public int getViewNum() {
+		return viewNum;
+	}
+	public void setViewNum(int viewNum) {
+		this.viewNum = viewNum;
+	}
+	public int getCommentCnt() {
+		return commentCnt;
+	}
+	public void setCommentCnt(int commentCnt) {
+		this.commentCnt = commentCnt;
+	}
+	
+	
+	
+	
+
 	
 	
 	

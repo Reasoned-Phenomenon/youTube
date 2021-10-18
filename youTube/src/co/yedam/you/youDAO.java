@@ -13,25 +13,28 @@ public class youDAO extends DAO {
 		connect();
 		
 		List<youHomeVO> list = new ArrayList<>();
-		String sql = "SELECT * FROM home";
+		String sql = "SELECT * FROM home ORDER BY 6 DESC";
 		
 		try {
-			
-			youHomeVO vo = new youHomeVO();
 			
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
-			if (rs.next()) {
+			while ( rs.next() ) {
 				
-				vo.setId(rs.getInt("id"));
+				youHomeVO vo = new youHomeVO();
+				vo.setNum(rs.getInt("num"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setTitle(rs.getString("title"));
-				vo.setLikeIt(rs.getString("likeIt"));
-				vo.setTime(rs.getString("time"));
+				vo.setTnTitle(rs.getString("tn_title"));
+				vo.setViTitle(rs.getString("vi_title"));
+				vo.setLikeIt(rs.getInt("like_it"));
+				vo.setUploadDate(rs.getString("upload_date"));
+				vo.setViewNum(rs.getInt("view_num"));
+				vo.setCommentCnt(rs.getInt("comment_cnt"));
 				
+				list.add(vo);
 			}
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -40,6 +43,53 @@ public class youDAO extends DAO {
 		}
 		
 		return list;
+		
+	}
+	
+	
+	//파일 업로그 처리.
+	//서블릿에서 파일 업로드, db저장.
+	public youHomeVO uploadFile(String author, String title, String tnTitle, String viTitle) {
+		
+		connect();
+		
+		try {
+			
+			int nextNum = -1;
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT NVL(MAX(num),0)+1 FROM home");
+			
+			if ( rs.next()) {
+				nextNum = rs.getInt(1);
+			}
+			
+			String sql = "INSERT INTO home VALUES(?,?,?,?,?,0,sysdate,0,0)";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, nextNum);
+			psmt.setString(2, author);
+			psmt.setString(3, title);
+			psmt.setString(4, tnTitle);
+			psmt.setString(5, viTitle);
+			
+			int r = psmt.executeUpdate();
+			System.out.println(r+"건 입력.");
+			
+			youHomeVO vo = new youHomeVO();
+			vo.setNum(nextNum);
+			vo.setAuthor(author);
+			vo.setTitle(title);
+			vo.setTnTitle(tnTitle);
+			vo.setViTitle(viTitle);
+			
+			return vo;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			disconnect();
+		}
 		
 	}
 	
