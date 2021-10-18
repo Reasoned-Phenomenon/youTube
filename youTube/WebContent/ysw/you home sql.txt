@@ -3,7 +3,7 @@ DROP table home;
 
 --테이블 생성
 CREATE TABLE home (
-num number(10) primary key,
+vi_num number(10) primary key,
 author varchar2(100),
 title varchar2(100),
 tn_title varchar2(100),
@@ -27,3 +27,5 @@ INSERT INTO home VALUES(5,'author5','title5','tntitle5','vititle5',500,sysdate,5
 COMMIT;
 
 SELECT * FROM home;
+
+
