@@ -16,13 +16,13 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="../template/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/plyr.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/plyr.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../template/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -134,11 +134,11 @@
                 <div class="col-lg-8">
                     <div class="anime__details__review">
                         <div class="section-title">
-                            <h5>Reviews</h5>
+                            <h5>댓글</h5>
                         </div>
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
-                                <img src="img/anime/review-1.jpg" alt="">
+                                <img src="../template/img/anime/review-1.jpg" alt="">
                             </div>
                             <div class="anime__review__item__text">
                                 <h6>Chris Curry - <span>1 Hour ago</span></h6>
@@ -148,50 +148,14 @@
                         </div>
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
-                                <img src="img/anime/review-2.jpg" alt="">
+                                <img src="../template/img/anime/review-2.jpg" alt="">
                             </div>
                             <div class="anime__review__item__text">
                                 <h6>Lewis Mann - <span>5 Hour ago</span></h6>
                                 <p>Finally it came out ages ago</p>
                             </div>
                         </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="img/anime/review-3.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                <p>Where is the episode 15 ? Slow update! Tch</p>
-                            </div>
-                        </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="img/anime/review-4.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
-                            </div>
-                        </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="img/anime/review-5.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                <p>Finally it came out ages ago</p>
-                            </div>
-                        </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="img/anime/review-6.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                <p>Where is the episode 15 ? Slow update! Tch</p>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="anime__details__form">
                         <div class="section-title">
@@ -199,7 +163,8 @@
                         </div>
                         <form action="#">
                             <textarea placeholder="Your Comment"></textarea>
-                            <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                            
+                            <button type="submit" onclick="textA(event)"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>
                 </div>
@@ -253,15 +218,117 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../template/js/jquery-3.3.1.min.js"></script>
+    <script src="../template/js/bootstrap.min.js"></script>
+    <script src="../template/js/player.js"></script>
+    <script src="../template/js/jquery.nice-select.min.js"></script>
+    <script src="../template/js/mixitup.min.js"></script>
+    <script src="../template/js/jquery.slicknav.js"></script>
+    <script src="../template/js/owl.carousel.min.js"></script>
+    <script src="../template/js/main.js"></script>
 
+ <script>
+
+
+ 
+ 
+ 
+ 
+   function makeCommentDiv(comment) {
+	   let outDiv = document.createElement('div');
+	   outDiv.className = "anime__review__item";
+	   
+	   let innerDiv = document.createElement('div');
+	   innerDiv.className = "anime__review__item__text";
+	   
+	   let firstDiv = document.createElement('div');
+	   firstDiv.className= "anime__review__item__pic";
+	   
+	   
+	   let img = document.createElement('img');
+	   img.setAttribute('src','../template/img/anime/review-1.jpg' );
+	   
+	   
+	   
+	   let h6 = document.createElement('h6')
+	   h6.innerText = comment.id + ' - ';
+	   console.log(h6);
+	   
+	   let span = document.createElement('span');
+	   span.innerText = comment.day;
+	   
+	   
+	   
+	   let p = document.createElement('p');
+	   p.innerText = comment.content;
+	   
+	   h6.appendChild(span);
+	   
+	   innerDiv.appendChild(h6);
+	   innerDiv.appendChild(p);
+	   
+	   firstDiv.appendChild(img);
+	   
+	   outDiv.appendChild(firstDiv);
+	   outDiv.appendChild(innerDiv);
+	   
+	   
+	   
+	   
+	   return outDiv;
+   } 
+ 
+   let xhtp = new XMLHttpRequest();
+   xhtp.open('get', '../jghCannelServlet');
+   xhtp.send();
+  
+   xhtp.onload = function() {
+	   let data = JSON.parse(xhtp.responseText);
+	   console.log(data);
+	   
+	   for(let datum of data) {
+		   let target = document.getElementsByClassName("anime__details__review");
+		   console.log(target);
+		   console.log(target[0]);
+		   console.log(datum);
+		   target[0].appendChild(makeCommentDiv(datum));
+	   }
+   };
+   
+   function textA (event) {
+	   event.preventDefault;
+	   let comment = document.getElementsByTagName('textarea')[0].value;
+	   console.log(comment);
+	   
+	   let userId = "jgh";  // 나중에 아이디값이랑 같이 넘기기.
+	   let param = "id="+userId+"&content="+comment;
+	   
+	   $.ajax({
+		   url:'../jghaddServlet',
+		   data: param,   
+		   type:'get',
+		   dataType:'json',
+		   success: function (result) {
+			   console.log("성공");
+			   
+			   let commentDiv = makeCommentDiv(result);
+			   console.log(commentDiv);
+			  
+			   $('.anime__details__review').append(commentDiv);
+			   
+			   
+		   },
+		   error: function (reject){
+			   console.log("실패");
+		   }
+	   });
+	   
+	   
+   }
+   
+   
+ </script>
+ 
 </body>
 
 </html>

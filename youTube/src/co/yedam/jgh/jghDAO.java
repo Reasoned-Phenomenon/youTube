@@ -13,7 +13,7 @@ public class jghDAO extends DAO {
 		connect();
 		
 		List<jghCannelVO> list = new ArrayList<>();
-		String sql = "select * From commentboard";
+		String sql = "select * From commentboard order by 1 desc";
 		
 		try {
 			stmt = conn.createStatement();
@@ -37,4 +37,47 @@ public class jghDAO extends DAO {
 		}
 		return list;
 	} 
+	
+	// 댓글 등록 
+     public jghCannelVO insertcomment (jghCannelVO comment) {
+    	 
+    	 connect();
+    	 jghCannelVO vo = new jghCannelVO();
+    
+    	try {
+    		int curNum=0;
+    		
+    		stmt = conn.createStatement();
+			rs = stmt.executeQuery("select MAX(num) From commentboard order by 1 desc");
+			
+			if(rs.next()) {
+				
+				curNum = rs.getInt("MAX(num)")+1;
+				
+			}
+    		
+    		psmt = conn.prepareStatement("insert into commentboard values(?,?,?,sysdate)");
+			psmt.setInt(1, curNum);
+			psmt.setString(2, comment.getId());
+			psmt.setString(3, comment.getContent());
+			
+		    int r = psmt.executeUpdate();
+		    System.out.println(r + "건 입력되었습니다.");
+		    
+		    
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select day from commentboard where=" + curNum);
+			
+			vo.setDay(rs.getString("day"));
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			disconnect();
+		}
+    	 
+    	return comment;
+     }
+     
 }
