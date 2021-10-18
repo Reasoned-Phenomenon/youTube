@@ -2,7 +2,7 @@ package co.yedam.you;
 
 public class youHomeVO {
 
-	int num;
+	int viNum;
 	String author;
 	String title;
 	String tnTitle;
@@ -12,11 +12,11 @@ public class youHomeVO {
 	int viewNum;
 	int commentCnt;
 	
-	public int getNum() {
-		return num;
+	public int getViNum() {
+		return viNum;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setViNum(int viNum) {
+		this.viNum = viNum;
 	}
 	public String getAuthor() {
 		return author;

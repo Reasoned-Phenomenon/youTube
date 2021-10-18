@@ -23,7 +23,7 @@ public class youDAO extends DAO {
 			while ( rs.next() ) {
 				
 				youHomeVO vo = new youHomeVO();
-				vo.setNum(rs.getInt("num"));
+				vo.setViNum(rs.getInt("vi_num"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setTitle(rs.getString("title"));
 				vo.setTnTitle(rs.getString("tn_title"));
@@ -76,7 +76,7 @@ public class youDAO extends DAO {
 			System.out.println(r+"건 입력.");
 			
 			youHomeVO vo = new youHomeVO();
-			vo.setNum(nextNum);
+			vo.setViNum(nextNum);
 			vo.setAuthor(author);
 			vo.setTitle(title);
 			vo.setTnTitle(tnTitle);
@@ -92,5 +92,31 @@ public class youDAO extends DAO {
 		}
 		
 	}
+	
+	public youHomeVO signUp () {
+		
+		connect();
+		String sql = "INSERT INTO client VALUES(?,?,?,?)";
+		
+		
+		try {
+			
+			
+			
+			stmt = conn.createStatement();
+			youHomeVO vo = new youHomeVO();
+			
+			return vo;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+		
+	}
+	
+	
 	
 }
