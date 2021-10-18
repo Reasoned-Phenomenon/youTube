@@ -64,12 +64,17 @@ public class jghDAO extends DAO {
 		    int r = psmt.executeUpdate();
 		    System.out.println(r + "건 입력되었습니다.");
 		    
+		    psmt = conn.prepareStatement("select day from commentboard where=?"); 
+		    psmt.setInt(1, curNum);
 		    
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select day from commentboard where=" + curNum);
+		    rs = psmt.executeQuery(); // 에러 확인해보기!!..
+		    String lastDay = null;
+		    if ( rs.next() ) {
+		       lastDay = rs.getString("day");
+		    }
+		    vo.setDay(lastDay);
 			
-			vo.setDay(rs.getString("day"));
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
