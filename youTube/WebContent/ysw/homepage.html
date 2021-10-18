@@ -13,7 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-
+	<!-- Google Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
     <!-- Css Styles -->
     <link rel="stylesheet" href="../template/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/font-awesome.min.css" type="text/css">
@@ -23,13 +25,50 @@
     <link rel="stylesheet" href="../template/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/style.css" type="text/css">
+    <style>
+    @font-face {
+	  font-family: 'Material Icons';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+	  src: local('Material Icons'),
+	    local('MaterialIcons-Regular'),
+	    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+	    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+	    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+	}
+	.material-icons {
+	  font-family: 'Material Icons';
+	  font-weight: normal;
+	  font-style: normal;
+	  font-size: 28px;  /* Preferred icon size */
+	  display: inline-block;
+	  line-height: 1;
+	  text-transform: none;
+	  letter-spacing: normal;
+	  word-wrap: normal;
+	  white-space: nowrap;
+	  direction: ltr;
+	  color: red;
+	
+	  /* Support for all WebKit browsers. */
+	  -webkit-font-smoothing: antialiased;
+	  /* Support for Safari and Chrome. */
+	  text-rendering: optimizeLegibility;
+	
+	  /* Support for Firefox. */
+	  -moz-osx-font-smoothing: grayscale;
+	
+	  /* Support for IE. */
+	  font-feature-settings: 'liga';
+	}
+    </style>
 
     <!--아이콘-->
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
         <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
     </svg>
-
 
 </head>
 
@@ -74,15 +113,15 @@
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                        <button type="button" class="btn btn-secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"></path>
-                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"></path>
-                            </svg>
-                        </button>
+                    	<span id="profile">
+                        	<a href="youlogin.html"><span class="icon_profile"></span></a>
+                        </span>
+                        
+                        <i class="material-icons">cloud_upload</i>
+                        
+                        <i class="material-icons">logout</i>
                         <!-- 돋보기부분 주석처리 -->
                         <!-- <a href="#" class="search-switch"><span class="icon_search"></span></a> -->
-                        <a href="./login.html"><span class="icon_profile"></span></a>
                     </div>
                 </div>
             </div>
@@ -159,7 +198,7 @@
                             </div>
                             -->
                         </div>
-                        <!--트렌딩 영상 6개 섬네일 + gif 구하기-->
+                        <!--트렌딩 영상 6개 섬네일-->
                         <div class="row">
 
                         </div>
@@ -287,6 +326,13 @@
 
 
 <script>
+
+	$(document).ready(function () {
+		
+			console.log(document.cookie)
+			profile()
+	});
+	
     let data;
 
     $.ajax({
@@ -404,6 +450,55 @@ function topView (home) {
     
     $('.trending__product').children().eq(1).append(sm6);
 
+}
+
+
+
+function profile () {
+	
+	let cookies = document.cookie.split(';');
+	
+	let email = cookies[0].split('=');
+	let name = email[1].split('@');
+	let id = name[0];
+	
+	if (id) {
+		$('#profile').html('');
+		$('#profile').append( $('<a />').append( $('<h4 />').html(id+'님').css('color','red') ) );
+		
+		
+		
+	}
+	
+}
+
+	
+	
+	
+	
+
+
+function getCookie (cname) {
+
+	let cookies = document.cookie.split('; ');
+
+	for (let i = 0 ; i < cookies.length ; i ++) {
+
+		if(cookies[i].indexOf(cname) === 0) {
+
+			let result = cookies[i].substring(cname.length+1);
+			return result;
+
+		}
+
+	}
+
+	return null;
+
+}
+
+function logout () {
+	document.cookie = 'email=;expires=0;path=/';
 }
 
 

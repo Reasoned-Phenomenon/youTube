@@ -203,6 +203,4 @@ public List<youHomeVO> topList () {
 		
 	}
 	
-	
-	
 }

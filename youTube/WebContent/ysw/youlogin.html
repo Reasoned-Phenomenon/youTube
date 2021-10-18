@@ -217,9 +217,10 @@
                 	
                     if(data.code == "success") {
                     	
-                        setCookie('email', result.email);
+                        setCookie('email', data.email);
                         
                         alert("로그인 성공");
+                        window.location.href="homepage.html";
                         
                     } else {
                         $('.input__item input').val('');
