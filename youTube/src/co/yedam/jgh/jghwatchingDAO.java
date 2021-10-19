@@ -6,8 +6,9 @@ import java.util.List;
 
 import co.yedam.common.DAO;
 
-public class jghDAO extends DAO {
-
+public class jghwatchingDAO extends DAO {
+    
+	// 댓글 목록.
 	public List<jghwatchinglVO> showList() {
 
 		connect();
@@ -38,7 +39,7 @@ public class jghDAO extends DAO {
 		return list;
 	}
 
-	// 댓글 등록
+	// 댓글 등록.
 	public jghwatchinglVO insertcomment(jghwatchinglVO comment) {
 
 		connect();
@@ -86,6 +87,31 @@ public class jghDAO extends DAO {
 		}
 
 		return comment;
+	}
+	
+	
+	// 댓글 삭제.
+	public String deleteComment(String id) {
+		
+		connect();
+		try {
+			psmt = conn.prepareStatement("delete from commentboard where id=?");
+			psmt.setString(1, id);
+			int r = psmt.executeUpdate();
+			
+			System.out.println(r + "건 삭제 되었습니다.");
+			
+			return id;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			return null;
+		} finally {
+			disconnect();
+		}
+		
+	
 	}
 
 }

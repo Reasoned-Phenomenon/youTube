@@ -35,7 +35,7 @@ public class jghwatchingServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Gson gson = new GsonBuilder().create();
 		
-		jghDAO dao = new jghDAO();
+		jghwatchingDAO dao = new jghwatchingDAO();
 		List<jghwatchinglVO> list = dao.showList();
 		
 		out.println(gson.toJson(list));

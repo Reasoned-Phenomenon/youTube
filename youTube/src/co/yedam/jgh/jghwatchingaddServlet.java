@@ -34,7 +34,7 @@ public class jghwatchingaddServlet extends HttpServlet {
       PrintWriter out = response.getWriter();
       Gson gson = new GsonBuilder().create();
       
-      jghDAO dao = new jghDAO();
+      jghwatchingDAO dao = new jghwatchingDAO();
       
       String id = request.getParameter("id");
       String content = request.getParameter("content");
