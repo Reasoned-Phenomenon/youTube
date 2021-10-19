@@ -1,0 +1,25 @@
+--테이블 삭제
+DROP table cmt;
+
+--테이블 생성
+CREATE TABLE cmt (
+vi_num number(10),
+cmt_num number(10) primary key,
+cmt_author varchar2(100), -- 고객테이블의 author과 연결
+cmt_content varchar2(300),
+cmt_date date
+);
+
+
+--초기값---------------
+----------------------
+----------------------
+INSERT INTO cmt VALUES(1,1,'author1','댓글입니다.',sysdate); -- "1"번동영상에 댓글 번호"1", 댓글 작성자는 "author1"이고, 내용은 "댓글입니다." 날짜는 시스템날짜.
+INSERT INTO cmt VALUES(1,2,'author2','댓글입니다.',sysdate); -- "1"번동영상에 댓글 번호"2", 댓글 작성자는 "author2"이고, 내용은 "댓글입니다." 날짜는 시스템날짜.
+INSERT INTO cmt VALUES(1,3,'author3','댓글입니다.',sysdate); -- "1"번동영상에 댓글 번호"3", 댓글 작성자는 "author3"이고, 내용은 "댓글입니다." 날짜는 시스템날짜.
+
+COMMIT;
+
+SELECT * FROM cmt;
+
+
