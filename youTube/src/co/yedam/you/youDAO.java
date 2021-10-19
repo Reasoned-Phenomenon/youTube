@@ -131,44 +131,51 @@ public List<youHomeVO> topList () {
 		
 	}
 	
-	public youClientVO signUp (String email, String author, String pw) {
+	public youClientVO signUp (String email, String author, String birthDay, String gender, String pw) {
 		
 		connect();
 		
 		try {
-			int beforeClinetNum=0;
+			int beforeClientNum=0;
 			
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT MAX(user_id) FROM client");
+			rs = stmt.executeQuery("SELECT MAX(user_num) FROM client");
 			
 			youClientVO vo = new youClientVO();
 			
 			if (rs.next()) {
-				vo.setUserNum(rs.getInt("MAX(user_id)"));
-				beforeClinetNum = rs.getInt("MAX(user_id)")+1;
+				
+				beforeClientNum = rs.getInt("MAX(user_num)");
+				
 			}
 			
-			psmt = conn.prepareStatement("INSERT INTO client VALUES(?,?,?,?)");
+			psmt = conn.prepareStatement("INSERT INTO client VALUES(?,?,?,?,?,?)");
 			
 			psmt.setString(1, email);
-			psmt.setInt(2, beforeClinetNum);
+			psmt.setInt(2, beforeClientNum+1);
 			psmt.setString(3, author);
-			psmt.setString(4, pw);
+			psmt.setString(4, birthDay);
+			psmt.setString(5, gender);
+			psmt.setString(6, pw);
 			
 			int r = psmt.executeUpdate();
 			System.out.println(r+"건 입력 완료");
+			
+			vo.setEmail(email);
+			vo.setUserNum(beforeClientNum+1);
+			vo.setAuthor(author);
+			vo.setBirthDay(birthDay);
+			vo.setGender(gender);
+			vo.setPw(pw);
 			
 			return vo;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+			return null;
 		} finally {
 			disconnect();
 		}
-		
-		return null;
-		
 		
 	}
 	

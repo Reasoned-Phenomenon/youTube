@@ -31,17 +31,20 @@ public class youSignupServlet extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String author = request.getParameter("name"); //이름 -> 작성자
+		String birthDay = request.getParameter("birthDay");
+		String gender = request.getParameter("gender");
 		String pw = request.getParameter("pw");
 
 		youDAO dao = new youDAO();
 		youClientVO vo = new youClientVO();
 		
-		vo = dao.signUp(email,author,pw);
+		vo = dao.signUp(email,author,birthDay,gender,pw);
 		
 		if ( vo == null) {
 			String end = "{\"errCode\":\"err\"}";
 			out.println(gson.toJson(end));
 		}
+		
 		out.println(gson.toJson(vo));
 		
 	}

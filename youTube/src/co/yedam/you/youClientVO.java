@@ -5,6 +5,8 @@ public class youClientVO {
 	String email;
 	int userNum;
 	String author;
+	String birthDay;
+	String gender;
 	String pw;
 	
 	public String getEmail() {
@@ -24,6 +26,18 @@ public class youClientVO {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	public String getBirthDay() {
+		return birthDay;
+	}
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public String getPw() {
 		return pw;
