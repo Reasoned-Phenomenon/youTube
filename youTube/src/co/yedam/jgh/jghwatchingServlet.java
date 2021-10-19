@@ -2,6 +2,7 @@ package co.yedam.jgh;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,21 +14,21 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 
-@WebServlet("/jghaddServlet")
-public class jghaddServlet extends HttpServlet {
+@WebServlet("/jghwatchingServlet")
+public class jghwatchingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
- 
-    public jghaddServlet() {
+
+    public jghwatchingServlet() {
         super();
        
     }
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
 	
-		request.setCharacterEncoding("UTF-8");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -35,25 +36,13 @@ public class jghaddServlet extends HttpServlet {
 		Gson gson = new GsonBuilder().create();
 		
 		jghDAO dao = new jghDAO();
+		List<jghwatchinglVO> list = dao.showList();
 		
-		String id = request.getParameter("id");
-		String content = request.getParameter("content");
-		
-		jghwatchinglVO comment = new jghwatchinglVO();
-		System.out.println(id);
-		
-		comment.setId(id);
-		comment.setContent(content);
-		
-		
-		dao.insertcomment(comment);
-		
-		out.println(gson.toJson(comment));
+		out.println(gson.toJson(list));
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		doGet(request, response);
 	}

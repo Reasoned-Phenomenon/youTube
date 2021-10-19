@@ -21,7 +21,7 @@ drop table comment2 ;
 --------------------------------
 
 
-<댓글테이블 두번째>
+<댓글테이블 두번째> ----영상페이지 댓글페이지 ------
 -------테이블 댓글 생성-------
 create table commentboard (
  num number primary key,  -- 댓글 순서번호.
@@ -41,4 +41,26 @@ where num >=2;
 drop table commentboard;
 
 -------------------------------------
+<채널 페이지 테이블 생성>
 
+----채널댓글 테이블----
+create table channel (
+ user_num number,         -- 회원 번호.
+ email varchar2(100),     -- 이메일.
+ author varchar2(100),    -- 작성자.
+ content varchar2(300),   -- 댓글내용.
+ comment_day date         -- 댓글 작성 날짜. + 시간까지  ex) 2021.10.15.15:00 이렇게 나올 수 있게
+);
+
+select nvl(max(user_num),0)+1 from channel;
+select max(user_num)from channel;
+insert into channel values((select nvl(max(user_num),0)+1 from channel),'qwertyy','excellent',sysdate);
+
+select * from channel;
+
+delete from channel
+where user_num >=2;
+
+commit;
+
+drop table channel;

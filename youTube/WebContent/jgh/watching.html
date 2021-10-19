@@ -230,100 +230,98 @@
 
  <script>
 
-
- 
- 
- 
- 
    function makeCommentDiv(comment) {
-	   let outDiv = document.createElement('div');
-	   outDiv.className = "anime__review__item";
-	   
-	   let innerDiv = document.createElement('div');
-	   innerDiv.className = "anime__review__item__text";
-	   
-	   let firstDiv = document.createElement('div');
-	   firstDiv.className= "anime__review__item__pic";
-	   
-	   
-	   let img = document.createElement('img');
-	   img.setAttribute('src','../template/img/anime/review-1.jpg' );
-	   
-	   
-	   
-	   let h6 = document.createElement('h6')
-	   h6.innerText = comment.id + ' - ';
-	   console.log(h6);
-	   
-	   let span = document.createElement('span');
-	   span.innerText = comment.day;
-	   console.log(span);
-	   
-	   
-	   
-	   let p = document.createElement('p');
-	   p.innerText = comment.content;
-	   
-	   h6.appendChild(span);
-	   
-	   innerDiv.appendChild(h6);
-	   innerDiv.appendChild(p);
-	   
-	   firstDiv.appendChild(img);
-	   
-	   outDiv.appendChild(firstDiv);
-	   outDiv.appendChild(innerDiv);
-	   
-	   
-	   return outDiv;
+      let outDiv = document.createElement('div');
+      outDiv.className = "anime__review__item";
+      
+      let innerDiv = document.createElement('div');
+      innerDiv.className = "anime__review__item__text";
+      
+      let firstDiv = document.createElement('div');
+      firstDiv.className= "anime__review__item__pic";
+      
+      
+      let img = document.createElement('img');
+      img.setAttribute('src','../template/img/anime/review-1.jpg' );
+      
+      
+      
+      let h6 = document.createElement('h6')
+      h6.innerText = comment.id + ' - ';
+      //console.log(h6);
+      
+      let span = document.createElement('span');
+      span.innerText = comment.commentDay;
+      //console.log(span);
+      
+      
+      
+      let p = document.createElement('p');
+      p.innerText = comment.content;
+      console.log(p);
+      
+      h6.appendChild(span);
+      
+      innerDiv.appendChild(h6);
+      innerDiv.appendChild(p);
+      
+      firstDiv.appendChild(img);
+      
+      outDiv.appendChild(firstDiv);
+      outDiv.appendChild(innerDiv);
+      
+      
+      return outDiv;
    } 
  
    let xhtp = new XMLHttpRequest();
-   xhtp.open('get', '../jghCannelServlet');
+   xhtp.open('get', '../jghwatchingServlet');
    xhtp.send();
   
    xhtp.onload = function() {
-	   let data = JSON.parse(xhtp.responseText);
-	   console.log(data);
-	   
-	   for(let datum of data) {
-		   let target = document.getElementsByClassName("anime__details__review");
-		   console.log(target);
-		   console.log(target[0]);
-		   console.log(datum);
-		   target[0].appendChild(makeCommentDiv(datum));
-	   }
+      let data = JSON.parse(xhtp.responseText);
+      //console.log(data);
+      
+      for(let datum of data) {
+         let target = document.getElementsByClassName("anime__details__review");
+         //console.log(target);
+         //console.log(target[0]);
+         console.log(datum);
+         target[0].appendChild(makeCommentDiv(datum));
+      }
    };
    
    function textA (event) {
-	   event.preventDefault();
-	   let comment = document.getElementsByTagName('textarea')[0].value;
-	   console.log(comment);
-	   
-	   let userId = "qwerty";  // 나중에 아이디값이랑 같이 넘기기.
-	   let param = "id="+userId+"&content="+comment;
-	   
-	   $.ajax({
-		   url:'../jghaddServlet',
-		   data: param,   
-		   type:'get',
-		   dataType:'json',
-		   success: function (result) {
-			   console.log("성공");
-			   
-			   let commentDiv = makeCommentDiv(result);
-			   console.log(commentDiv);
-			  
-			   $('.anime__details__review').append(commentDiv);
-			   
-			   
-		   },
-		   error: function (reject){
-			   console.log("실패");
-		   }
-	   });
-	   
-	   
+      
+      event.preventDefault(); 
+      
+      let comment = document.getElementsByTagName('textarea')[0].value;
+      //console.log(comment);
+      
+      let userId = "qwerty";  // 나중에 아이디값이랑 같이 넘기기.
+      let param = "id="+userId+"&content="+comment;
+      
+      $.ajax({
+         url:'../jghwatchingaddServlet',
+         data: param,   
+         type:'get',
+         dataType:'json',
+         success: function (result) {
+            console.log("성공");
+            
+            let commentDiv = makeCommentDiv(result);
+            //console.log(commentDiv);
+           
+            $('.anime__details__review').append(commentDiv);
+            
+            
+         },
+         error: function (reject){
+            console.log("실패");
+         }
+      });
+      
+      
    }
    
    

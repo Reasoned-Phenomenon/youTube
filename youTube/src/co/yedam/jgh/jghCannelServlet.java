@@ -27,7 +27,6 @@ public class jghCannelServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -35,8 +34,8 @@ public class jghCannelServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Gson gson = new GsonBuilder().create();
 		
-		jghDAO dao = new jghDAO();
-		List<jghwatchinglVO> list = dao.showList();
+		jghchannelDAO dao = new jghchannelDAO();
+		List<jghchannelVO> list = dao.showList();
 		
 		out.println(gson.toJson(list));
 	}
