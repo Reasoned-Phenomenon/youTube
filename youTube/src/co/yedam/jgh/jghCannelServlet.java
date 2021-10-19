@@ -36,7 +36,7 @@ public class jghCannelServlet extends HttpServlet {
 		Gson gson = new GsonBuilder().create();
 		
 		jghDAO dao = new jghDAO();
-		List<jghCannelVO> list = dao.showList();
+		List<jghwatchinglVO> list = dao.showList();
 		
 		out.println(gson.toJson(list));
 	}

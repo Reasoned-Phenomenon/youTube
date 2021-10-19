@@ -8,11 +8,11 @@ import co.yedam.common.DAO;
 
 public class jghDAO extends DAO {
 
-	public List<jghCannelVO> showList() {
+	public List<jghwatchinglVO> showList() {
 		
 		connect();
 		
-		List<jghCannelVO> list = new ArrayList<>();
+		List<jghwatchinglVO> list = new ArrayList<>();
 		String sql = "select * From commentboard order by 1 desc";
 		
 		try {
@@ -21,7 +21,7 @@ public class jghDAO extends DAO {
 			
 			while(rs.next()) {
 				
-				jghCannelVO vo = new jghCannelVO();
+				jghwatchinglVO vo = new jghwatchinglVO();
 				vo.setNum(rs.getInt("num"));
 				vo.setId(rs.getString("id"));
 				vo.setContent(rs.getString("content"));
@@ -39,10 +39,10 @@ public class jghDAO extends DAO {
 	} 
 	
 	// 댓글 등록 
-     public jghCannelVO insertcomment (jghCannelVO comment) {
+     public jghwatchinglVO insertcomment (jghwatchinglVO comment) {
     	 
     	 connect();
-    	 jghCannelVO vo = new jghCannelVO();
+    	 jghwatchinglVO vo = new jghwatchinglVO();
     
     	try {
     		int curNum=0;
@@ -64,7 +64,7 @@ public class jghDAO extends DAO {
 		    int r = psmt.executeUpdate();
 		    System.out.println(r + "건 입력되었습니다.");
 		    
-		    psmt = conn.prepareStatement("select day from commentboard where=?"); 
+		    psmt = conn.prepareStatement("select day from commentboard where=? "); 
 		    psmt.setInt(1, curNum);
 		    
 		    rs = psmt.executeQuery(); // 에러 확인해보기!!..

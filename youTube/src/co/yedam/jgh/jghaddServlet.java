@@ -39,7 +39,7 @@ public class jghaddServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String content = request.getParameter("content");
 		
-		jghCannelVO comment = new jghCannelVO();
+		jghwatchinglVO comment = new jghwatchinglVO();
 		System.out.println(id);
 		
 		comment.setId(id);

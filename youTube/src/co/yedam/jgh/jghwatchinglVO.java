@@ -1,6 +1,6 @@
 package co.yedam.jgh;
 
-public class jghCannelVO {
+public class jghwatchinglVO {
  
 	int num;  // 댓글 순서번호.
 	String id; // 아이디.
