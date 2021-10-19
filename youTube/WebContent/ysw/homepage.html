@@ -292,6 +292,7 @@
 
 <script>
 
+
 	$(document).ready(function () {
 		
 		console.log(document.cookie)
@@ -423,8 +424,8 @@ function topView (home) {
        	
        	//h5
        	let h5 = $('<h5 />')
-       		let a = $('<a />').attr('href', '#').html(home.title) //링크 걸어주기
-       
+       		//let a = $('<a />').attr('href', '#').html(home.title)
+       		let a = $('<a />').attr('onclick', 'viNumSender('+home.viNum+')').html(home.title) //링크 걸어주기
             
 
     //구조
@@ -439,9 +440,23 @@ function topView (home) {
 
 }
 	
+function viNumSender(viNum) {
+	
+	setCookie('viNum',viNum);
+	window.location.href="youwatching.html/"+viNum;
+	
+}
 
+function setCookie (cname, cval) {
 
-
+	const times = 3;
+	const d = new Date();
+	//d.setTime(d.getTime() + 1000 * 60 * 60 * times);
+	d.setTime(d.getTime() + 1000 );
+	console.log(d.toUTCString);
+	document.cookie = cname + '=' + cval + '; expires=' + d.toUTCString + '; path=/';
+	
+}
 </script>
 
 

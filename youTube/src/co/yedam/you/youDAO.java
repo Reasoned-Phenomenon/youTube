@@ -214,4 +214,41 @@ public List<youHomeVO> topList () {
 		
 	}
 	
+	
+	//watching
+	
+public List<youCommentVO> showComment(int viNum) {
+		
+		connect();
+		
+		List<youCommentVO> list = new ArrayList<>();
+		String sql = "SELECT * FROM cmt ORDER BY 2";
+		
+		try {
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while ( rs.next() ) {
+				
+				youCommentVO vo = new youCommentVO();
+				
+				vo.setViNum(rs.getInt("vi_num"));
+				vo.setCmtNum(rs.getInt("cmt_num"));
+				vo.setCmtAuthor(rs.getString("cmt_author"));
+				vo.setCmtContent(rs.getString("cmt_content"));
+				vo.setCmtDate(rs.getString("cmt_date"));
+
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		
+		return list;
+		
+	}
 }
