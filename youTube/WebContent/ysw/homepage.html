@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
+                        <a href="homepage.html">
                             <img src="../template/img/logo.png" alt="">
                         </a>
                     </div>
@@ -89,18 +89,18 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
+                                <li class="active"><a href="homepage.html">Homepage</a></li>
+                                <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="./categories.html">Categories</a></li>
-                                        <li><a href="./anime-details.html">Anime Details</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                        <li><a href="#">Categories</a></li>
+                                        <li><a href="#">Anime Details</a></li>
+                                        <li><a href="#">Anime Watching</a></li>
                                         <li><a href="uploadpage.html">Upload</a></li>
                                         <li><a href="yousignup.html">Sign Up</a></li>
                                         <li><a href="youlogin.html">Login</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./blog.html">Our Blog</a></li>
+                                <li><a href="#">Our Blog</a></li>
                                 <li><a href="#">Contacts</a></li>
                             </ul>
                         </nav>
@@ -111,8 +111,6 @@
                     
                     	<span id="profile">
                         	<a href="youlogin.html"><button class="material-icons">login</button></a>
-                        	
-                        </button>
                         </span>
                        
                         
@@ -134,44 +132,44 @@
     <section class="hero">
         <div class="container">
             <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="../template/img/hero/hero-1.jpg">
+                <div class="hero__items set-bg" data-setbg="../template/thumbnail/tntitle1.jpg">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
+                                <div class="label">장르</div>
+                                <h2>제목을 여기에 넣으세요</h2>
+                                <p>영상 소개글을 조금 길게 적을 수 있네요</p>
                                 <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hero__items set-bg" data-setbg="../template/img/hero/hero-1.jpg">
+                <div class="hero__items set-bg" data-setbg="../template/thumbnail/tntitle2.jpg">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
+                                <div class="label">장르를 여기에</div>
+                                <h2>제목을 여기에 적으시면 됩니다</h2>
+                                <p>영상 소개글을 조금 길게 적으면 됩니다.</p>
                                 <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hero__items set-bg" data-setbg="../template/img/hero/hero-1.jpg">
+                <div class="hero__items set-bg" data-setbg="../template/thumbnail/tntitle3.jpg">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
+                                <div class="label">장르를 길게</div>
+                                <h2>제목을 여기에 적으면 됩니다</h2>
+                                <p>영상 소개를 여기에 적으면 됩니다.</p>
                                 <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </section>
     <!-- Hero Section End -->
 
@@ -232,7 +230,7 @@
 </div>
 </div>
 </div>
-    </section>
+</section>
 <!-- Product Section End -->
 
 <!-- Footer Section Begin -->
@@ -250,9 +248,9 @@
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
-                        <li class="active"><a href="./index.html">Homepage</a></li>
-                        <li><a href="./categories.html">Categories</a></li>
-                        <li><a href="./blog.html">Our Blog</a></li>
+                        <li class="active"><a href="homepage.html">Homepage</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Our Blog</a></li>
                         <li><a href="#">Contacts</a></li>
                     </ul>
                 </div>
@@ -296,12 +294,47 @@
 
 	$(document).ready(function () {
 		
-			console.log(document.cookie)
-			profile()
+		console.log(document.cookie)
+		
+		profile()
 			
 	});
 	
+	function profile () {
+		
+		if (document.cookie) {
+			
+		let cookies = document.cookie.split('; ');
+		
+		let email = cookies[0].split('=');
+		let name = email[1].split('@');
+		let id = name[0];
+		
+		let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
+		
+		if (id) {
+			
+			$('#profile').html('');
+			$('#profile').append( $('<a />').append( $('<h6 />').html(id+'님').css('color','red') ) );
+			$('#profile').append(logoutBtn);
+			
+		}
+		}
+		
+	}
+
+	function logout () {
 	
+	
+		if (confirm('로그아웃 하시겠습니까?')) {
+			
+			document.cookie = 'email=; expires=0; path=/';
+			document.cookie = 'author=; expires=0; path=/';
+			window.location.href="homepage.html";
+		
+		}
+		
+	}
 	
     let data;
 
@@ -332,8 +365,8 @@
         let pi = $('<div />').addClass('product__item');
             //bg
             let bg = $('<div />').addClass('product__item__pic set-bg');
-                $(bg).attr('data-setbg',"../template/thumbnail/"+home.title+".jpg"); // 섬네일-main.js에서 일괄적용.
-                $(bg).css('background-image', 'url(../template/thumbnail/'+home.title+'.jpg)'); // 섬네일(수동)
+                $(bg).attr('data-setbg',"../template/thumbnail/"+home.tnTitle); // 섬네일-main.js에서 일괄적용.
+                $(bg).css('background-image', 'url(../template/thumbnail/'+home.tnTitle+')'); // 섬네일(수동)
                 //$(bg).html('<a href="'+'#'+'"></a>');             //영상페이지 주소 넣어서 영상클릭시에도 이동하게하기
                 let ep = $('<div />').addClass('ep');
                     ep.html('10/10');                                                   //회차정보, 임의로 넣어둠
@@ -377,7 +410,7 @@ function topView (home) {
     //생성
         //sv
      let sv = $('<div />').addClass('product__sidebar__view__item set-bg mix').attr('data-setbg','../template/img/sidebar/tv-1.jpg');
-     $(sv).css('background-image', 'url(../template/thumbnail/'+home.title+'.jpg)');
+     $(sv).css('background-image', 'url(../template/thumbnail/'+home.tnTitle+')');
 
         //ep
         let ep = $('<div />').addClass('ep');
@@ -405,39 +438,7 @@ function topView (home) {
     $('.filter__gallery').append(sv);
 
 }
-
-	function profile () {
-		
-		let cookies = document.cookie.split(';');
-		
-		let email = cookies[0].split('=');
-		let name = email[1].split('@');
-		let id = name[0];
-		
-		let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
-		
-		if (id) {
-			
-			$('#profile').html('');
-			$('#profile').append( $('<a />').append( $('<h6 />').html(id+'님').css('color','red') ) );
-			$('#profile').append(logoutBtn);
-			
-			
-		}
-		
-	}
-
-	function logout () {
 	
-	
-		if (confirm('로그아웃 하시겠습니까?')) {
-			
-			document.cookie = 'email=;expires=0;path=/';
-			window.location.href="homepage.html";
-		
-		}
-		
-	}
 
 
 
