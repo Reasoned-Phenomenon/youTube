@@ -30,13 +30,13 @@ public class youSigninServlet extends HttpServlet {
 		Gson gson = new GsonBuilder().create();
 		
 		String email = request.getParameter("email");
-		String pw = request.getParameter("pw"); //이름 -> 작성자
-		
+		String pw = request.getParameter("pw"); 
+		//이름 -> 작성자
 		youDAO dao = new youDAO();
 		String code = null;
-		
-		if (dao.signIn(email, pw)) {
-			 code = "{\"code\":\"success\",\"email\":\""+email+"\"}";
+		String author = dao.signIn(email, pw);
+		if (!author.isEmpty()) {
+			 code = "{\"code\":\"success\",\"email\":\"" + email + "\",\"author\":\""+ author +"\"}";
 		} else {
 			 code = "{\"code\":\"fail\"}";
 		}

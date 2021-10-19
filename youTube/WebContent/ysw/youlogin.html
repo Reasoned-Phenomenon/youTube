@@ -46,11 +46,12 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li><a href="./index.html">Homepage</a></li>
+                                <li><a href="homepage.html">Homepage</a></li>
                                 <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="./anime-details.html">Anime Details</a></li>
                                         <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                        <li><a href="uploadpage.html">Upload</a></li>
                                         <li><a href="yousignup.html">Sign Up</a></li>
                                         <li><a href="youlogin.html">Login</a></li>
                                     </ul>
@@ -114,7 +115,7 @@
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>Dont’t Have An Account?</h3>
-                        <a href="#" class="primary-btn">Register Now</a>
+                        <a href="yousignup.html" class="primary-btn">Register Now</a>
                     </div>
                 </div>
             </div>
@@ -218,6 +219,7 @@
                     if(data.code == "success") {
                     	
                         setCookie('email', data.email);
+                        setCookie('author', data.author);
                         
                         alert("로그인 성공");
                         window.location.href="homepage.html";

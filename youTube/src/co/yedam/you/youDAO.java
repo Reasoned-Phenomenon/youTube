@@ -172,34 +172,38 @@ public List<youHomeVO> topList () {
 		
 	}
 	
-	public boolean signIn (String email, String pw) {
+	public String signIn (String email, String pw) {
 		
 		connect();
 		
 		try {
 			
 			String dbPw = null;
-			String sql = "SELECT pw FROM client WHERE email=?";
+			String author = null;
+			String sql = "SELECT * FROM client WHERE email=?";
 			
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, email);
 			rs = psmt.executeQuery();
 			
 			if ( rs.next() ) {
-				 dbPw = rs.getString("pw");
+				
+				dbPw = rs.getString("pw");
+				author = rs.getString("author");
+				
 			}
 			
 			if ( dbPw.equals(pw)) {
-				return true;
+				return author;
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		} finally {
 			disconnect();
 		}
-		return false;
+		return null;
 		
 	}
 	
