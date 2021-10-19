@@ -44,7 +44,7 @@ drop table commentboard;
 <채널 페이지 테이블 생성>
 
 ----채널댓글 테이블----
-create table channel (
+ccreate table channel (
  user_num number,         -- 회원 번호.
  email varchar2(100),     -- 이메일.
  author varchar2(100),    -- 작성자.
@@ -54,12 +54,15 @@ create table channel (
 
 select nvl(max(user_num),0)+1 from channel;
 select max(user_num)from channel;
-insert into channel values((select nvl(max(user_num),0)+1 from channel),'qwertyy','excellent',sysdate);
+insert into channel values((select nvl(max(user_num),0)+1 from channel),'yedam@email','yedam','excellent',sysdate);
+insert into channel values((select nvl(max(user_num),0)+1 from channel),'aaaa@email','aaaa','good',sysdate);
 
 select * from channel;
 
 delete from channel
-where user_num >=2;
+where user_num >=3;
+
+select MAX(user_num) From channel order by 1 desc;
 
 commit;
 

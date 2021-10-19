@@ -3,9 +3,9 @@ package co.yedam.jgh;
 public class jghchannelVO {
 
 	int userNum;
-	String Email;
-	String Author;
-	String Content;
+	String email;
+	String author;
+	String content;
 	String commentDay;
 	
 	public int getUserNum() {
@@ -15,22 +15,22 @@ public class jghchannelVO {
 		this.userNum = userNum;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getAuthor() {
-		return Author;
+		return author;
 	}
 	public void setAuthor(String author) {
-		Author = author;
+		this.author = author;
 	}
 	public String getContent() {
-		return Content;
+		return content;
 	}
 	public void setContent(String content) {
-		Content = content;
+		this.content = content;
 	}
 	public String getCommentDay() {
 		return commentDay;
@@ -39,5 +39,6 @@ public class jghchannelVO {
 		this.commentDay = commentDay;
 	}
 	
+
 	
 }

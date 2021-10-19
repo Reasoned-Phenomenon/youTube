@@ -36,16 +36,16 @@ public class channeladdServlet extends HttpServlet {
 	      
 	      jghchannelDAO dao = new jghchannelDAO();
 	      
-	      String Author = request.getParameter("Author");
-	      String Content = request.getParameter("Content");
-	      String  Email = request.getParameter("Email");
+	      String author = request.getParameter("author");
+	      String content = request.getParameter("content");
+	      String  email = request.getParameter("email");
 	      
 	      jghchannelVO comment = new jghchannelVO();
 	     // System.out.println(Content);
 	      
-	      comment.setAuthor(Author);
-	      comment.setContent(Content);
-	      comment.setEmail(Email);
+	      comment.setAuthor(author);
+	      comment.setContent(content);
+	      comment.setEmail(email);
 	      
 	      dao.insertcomment(comment);
 	      

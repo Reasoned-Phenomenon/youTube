@@ -249,9 +249,8 @@
 						</div>
 						<form action="#">
 							<textarea placeholder="Your Comment"></textarea>
-							<button type="submit" onclick="textA(event)">
-								<i class="fa fa-location-arrow"></i> 댓글등록
-							</button>
+							<button type="submit" onclick="textAdd(event)"><i class="fa fa-location-arrow"></i> 댓글등록</button>
+							<button type="submit" onclick="textDel(event)"><i class="fa fa-location-arrow"></i> 댓글삭제</button>
 						</form>
 					</div>
 				</div>
@@ -390,7 +389,7 @@
      	   
      	   
      	    let h6 = document.createElement('h6')
-     	    h6.innerText = comment.Author + ' - ';
+     	    h6.innerText = comment.author + ' - ';
      	    console.log(h6);
      	   
      	    let span = document.createElement('span');
@@ -432,7 +431,8 @@
            }
         };
         
-        function textA (event) {
+        // 댓글등록 버튼.
+        function textAdd (event) {
            
            event.preventDefault();
            
@@ -440,12 +440,12 @@
            console.log(comment);
            
            
-           let email = "kildong@email";
-           let author = "김길동";
+           let email = "zxcv@email.com";
+           let author = "허수아비";
            
            let userId = "123123213";
            
-           let param = "Email="+email+"&Author="+author+"&Content="+comment+"&useId="+userId;
+           let param = "email="+email+"&author="+author+"&content="+comment+"&useId="+userId;
            
            $.ajax({
               url:'../channeladdServlet',
@@ -466,6 +466,14 @@
                  console.log("실패");
               }
            });
+        }
+        
+        // 댓글삭제 버튼.
+        function textDel (event) {
+        	e.preventDefault();
+        	
+        	
+        	
         }
         </script>
 
