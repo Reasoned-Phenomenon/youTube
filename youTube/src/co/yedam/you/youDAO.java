@@ -256,13 +256,12 @@ public List<youCommentVO> showComment(int viNum) {
 		
 		connect();
 		
-		String sql = "SELECT * FROM home WHERE vi_num=?";
-		
 		youHomeVO vo = new youHomeVO();	
+		int beforeViewNum = 0;
 		
 		try {
 			
-			psmt = conn.prepareStatement(sql);
+			psmt = conn.prepareStatement("SELECT * FROM home WHERE vi_num=?");
 			psmt.setInt(1, viNum);
 			
 			rs= psmt.executeQuery();
@@ -276,10 +275,19 @@ public List<youCommentVO> showComment(int viNum) {
 			vo.setViTitle(rs.getString("vi_title"));	
 			vo.setLikeIt(rs.getInt("like_it"));	
 			vo.setUploadDate(rs.getString("upload_date"));	
-			vo.setViewNum(rs.getInt("view_num"));	
 			vo.setCommentCnt(rs.getInt("comment_cnt"));	
-				
+			
+			//조회수 +1
+			beforeViewNum = rs.getInt("view_num");
+			vo.setViewNum(beforeViewNum+1);
 			}
+			
+			psmt = conn.prepareStatement("UPDATE home SET view_num = ? WHERE vi_num=?");
+			psmt.setInt(1, beforeViewNum+1);
+			psmt.setInt(2, viNum);
+			
+			int r = psmt.executeUpdate();
+			System.out.println("조회수"+r+"증가");
 		
 			return vo;
 			

@@ -86,9 +86,9 @@ function topView (home) {
 //jsp 호출
 function viNumSender(viNum) {
 	
-	setCookie('viNum',viNum);
-	
-	let param = 'viNum='+viNum;
+	//setCookie('viNum',viNum);
+	console.log(viNum);
+	let param='viNum='+viNum;
 	
 	  $.ajax({
 		url:'../youWatchServlet',
@@ -104,9 +104,5 @@ function viNumSender(viNum) {
 		}
 		
 	})
-	
-	
-	
-	
 	
 }

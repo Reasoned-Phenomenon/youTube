@@ -154,43 +154,43 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			
 	});
 	
-        function logIn (e) {
+    function logIn (e) {
 
-            e.preventDefault();
-    	
-            let email = $('.input__item input').eq(0).val();
-            let pw = $('.input__item input').eq(1).val();
+        e.preventDefault();
+    
+        let email = $('.input__item input').eq(0).val();
+        let pw = $('.input__item input').eq(1).val();
 
-            let param = 'email='+email+'&pw='+pw;
+        let param = 'email='+email+'&pw='+pw;
 
-            $.ajax({
-                url:'../youSigninServlet',
-                type: 'post',
-                data: param,
-                dataType: 'json',
-                success: function(result) {
-                	let data = JSON.parse(result);
-                	
-                    if(data.code == "success") {
-                    	
-                        setCookie('email', data.email);
-                        
-                        setCookie('author', data.author);
-                        
-                        alert("로그인 성공");
-                        window.location.href="homepage.html";
-                        
-                    } else {
-                        $('.input__item input').val('');
-                        alert("로그인 실패");
-                    }
-                },
-                error: function (reject) {
-                    console.log(reject);
+        $.ajax({
+            url:'../youSigninServlet',
+            type: 'post',
+            data: param,
+            dataType: 'json',
+            success: function(result) {
+                let data = JSON.parse(result);
+                
+                if(data.code == "success") {
+                    
+                    setCookie('email', data.email);
+                    
+                    setCookie('author', data.author);
+                    
+                    alert("로그인 성공");
+                    window.location.href="homepage.html";
+                    
+                } else {
+                    $('.input__item input').val('');
+                    alert("로그인 실패");
                 }
-            });
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        });
 
-        }
+    }
         
     </script>
 </body>

@@ -1,21 +1,24 @@
 // 프로필 -> 로그인 상태
 function profile () {
 		
-    let email, emailA, emailId;
+    //let email, emailA, emailId;
+    let author, authorA;
         
-        email = getCookie('email');
+        //email = getCookie('email');
+        author = getCookie('author');
         
-        if ( email ) {
+        // if ( email ) {
             
-        emailA = email.split('@');
-        emailId = emailA[0];
+        // emailA = email.split('@');
+        // emailId = emailA[0];
         
-        }
+        // }
     
-        if (emailId) {
+        //if (emailId) {
+        if (author) {
             
             $('#profile').html('');
-            $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
+            $('#profile').append( $('<a />').append( $('<h6 />').html(author+'님').css('color','red') ) );
             
             let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
             $('#profile').append(logoutBtn);
