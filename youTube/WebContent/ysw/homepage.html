@@ -242,7 +242,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="./index.html"><img src="../template/img/logo.png" alt=""></a>
+                    <a href="homepage.html"><img src="../upload/JORDY.gif" height="60px" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -302,25 +302,52 @@
 	
 	function profile () {
 		
+		let email, emailA, emailId;
+		
 		if (document.cookie) {
 			
+			email = getCookie('email');
+			
+			if ( email ) {
+				
+			emailA = email.split('@');
+			emailId = emailA[0];
+			
+			}
+			
+            let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
+		
+            if (emailId) {
+                
+                $('#profile').html('');
+                $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
+                $('#profile').append(logoutBtn);
+                
+            }
+            
+            
+            
+		}
+		
+	}
+	
+	function getCookie (cname) {
+
 		let cookies = document.cookie.split('; ');
-		
-		let email = cookies[0].split('=');
-		let name = email[1].split('@');
-		let id = name[0];
-		
-		let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
-		
-		if (id) {
-			
-			$('#profile').html('');
-			$('#profile').append( $('<a />').append( $('<h6 />').html(id+'님').css('color','red') ) );
-			$('#profile').append(logoutBtn);
-			
+
+		for (let i = 0 ; i < cookies.length ; i ++) {
+
+			if(cookies[i].indexOf(cname) === 0) {
+
+				let result = cookies[i].substring(cname.length+1);
+				return result;
+
+			}
+
 		}
-		}
-		
+
+		return null;
+
 	}
 
 	function logout () {
@@ -442,7 +469,29 @@ function topView (home) {
 function viNumSender(viNum) {
 	
 	setCookie('viNum',viNum);
-	window.location.href="youwatching.html/"+viNum;
+	
+	let param = 'viNum='+viNum;
+	
+	//location.href="../youwatching.html/?viNum="+viNum;
+	
+	  $.ajax({
+		url:'../youWatchServlet',
+		data: param,
+		type:'get',
+		dataType:'json',
+		success: function (result) {
+			console.log(result.viNum);
+			window.location.href="youwatching.jsp?viNum="+result.viNum;
+		},
+		error: function (reject) {
+			console.log(reject);
+		}
+		
+	})
+	
+	
+	
+	
 	
 }
 
@@ -452,7 +501,7 @@ function setCookie (cname, cval) {
 	const d = new Date();
 	//d.setTime(d.getTime() + 1000 * 60 * 60 * times);
 	d.setTime(d.getTime() + 1000 );
-	console.log(d.toUTCString);
+	//console.log(d.toUTCString);
 	document.cookie = cname + '=' + cval + '; expires=' + d.toUTCString + '; path=/';
 	
 }

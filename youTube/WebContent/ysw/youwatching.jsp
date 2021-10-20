@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -7,13 +9,13 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>You | Tube</title>
+    <title>Yoo | Tube</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-
+	
     <!-- Css Styles -->
     <link rel="stylesheet" href="../template/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/font-awesome.min.css" type="text/css">
@@ -24,7 +26,8 @@
     <link rel="stylesheet" href="../template/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/style.css" type="text/css">
     
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
     @font-face {
 	  font-family: 'Material Icons';
@@ -63,16 +66,22 @@
 	  font-feature-settings: 'liga';
 	}
     </style>
+
 </head>
 
+
 <body>
+
+	<%
+	String viNum = request.getParameter("viNum");
+	%>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header">
+   <header class="header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -87,16 +96,17 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li><a href="homepage.html">Homepage</a></li>
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
+                                <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="./anime-details.html">Anime Details</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                        <li><a href="#">Categories</a></li>
+                                        <li><a href="#">Anime Details</a></li>
+                                        <li><a href="#">Anime Watching</a></li>
                                         <li><a href="uploadpage.html">Upload</a></li>
                                         <li><a href="yousignup.html">Sign Up</a></li>
                                         <li><a href="youlogin.html">Login</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./blog.html">Our Blog</a></li>
+                                <li><a href="#">Our Blog</a></li>
                                 <li><a href="#">Contacts</a></li>
                             </ul>
                         </nav>
@@ -115,72 +125,65 @@
     </header>
     <!-- Header End -->
 
-    <!-- Normal Breadcrumb Begin -->
-    <section class="normal-breadcrumb set-bg" data-setbg="../template/img/normal-breadcrumb.jpg">
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="normal__breadcrumb__text">
-                        <h2>Login</h2>
-                        <p>Welcome to the official Anime blog.</p>
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="homepage.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="#">Categories</a>
+                        <a href="#">Cat</a>
+                        <span id="viTitleSpan"></span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Normal Breadcrumb End -->
+    </div>
+    <!-- Breadcrumb End -->
 
-    <!-- Login Section Begin -->
-    <section class="login spad">
+    <!-- Anime Section Begin -->
+    <section class="anime-details spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="login__form">
-                        <h3>Login</h3>
-                        <form action="#">
-                            <div class="input__item">
-                                <input type="text" placeholder="Email address">
-                                <span class="icon_mail"></span>
-                            </div>
-                            <div class="input__item">
-                                <input type="password" placeholder="Password">
-                                <span class="icon_lock"></span>
-                            </div>
-                            <button type="submit" class="site-btn" onclick="logIn(event)">Login Now</button>
-                        </form>
-                        <!-- 비밀번호 찾기 제외
-                        <a href="#" class="forget_pass">Forgot Your Password?</a>
-                        -->
+                <div class="col-lg-12">
+                    <div class="anime__video__player">
+                    	<!-- 비디오 들어가는 곳 -->
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="login__register">
-                        <h3>Dont’t Have An Account?</h3>
-                        <a href="yousignup.html" class="primary-btn">Register Now</a>
-                    </div>
+                    
                 </div>
             </div>
-            <div class="login__social">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6">
-                        <!-- 소셜 로그인 제외
-                        <div class="login__social__links">
-                            <span>or</span>
-                            <ul>
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With
-                                Facebook</a></li>
-                                <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
-                                </li>
-                            </ul>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="anime__details__review">
+                        <div class="section-title">
+                            <h5>Reviews</h5>
                         </div>
-                        -->
+                        <div class="anime__review__item">
+                            <div class="anime__review__item__pic">
+                                <img src="../template/img/anime/review-1.jpg" alt="">
+                            </div>
+                            <div class="anime__review__item__text">
+                                <h6>Chris Curry - <span>1 Hour ago</span></h6>
+                                <p>whachikan Just noticed that someone categorized this as belonging to the genre
+                                "demons" LOL</p>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="anime__details__form">
+                        <div class="section-title">
+                            <h5>Your Comment</h5>
+                        </div>
+                        <form action="#">
+                            <textarea placeholder="Your Comment"></textarea>
+                            <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Login Section End -->
+    <!-- Anime Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer">
@@ -191,15 +194,15 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="footer__logo">
-                        <a href="./index.html"><img src="../template/img/logo.png" alt=""></a>
+                        <a href="homepage.html"><img src="../template/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="footer__nav">
                         <ul>
-                            <li class="active"><a href="./index.html">Homepage</a></li>
-                            <li><a href="./categories.html">Categories</a></li>
-                            <li><a href="./blog.html">Our Blog</a></li>
+                            <li class="active"><a href="homepage.html">Homepage</a></li>
+                            <li><a href="#">Categories</a></li>
+                            <li><a href="#">Our Blog</a></li>
                             <li><a href="#">Contacts</a></li>
                         </ul>
                     </div>
@@ -215,7 +218,6 @@
       </footer>
       <!-- Footer Section End -->
 
-      <!-- 업로드 폼으로 바꾸는 것도 괜찮을 것 같음 -->
       <!-- Search model Begin -->
       <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
@@ -236,18 +238,90 @@
     <script src="../template/js/jquery.slicknav.js"></script>
     <script src="../template/js/owl.carousel.min.js"></script>
     <script src="../template/js/main.js"></script>
-
-
+    
     <script>
     
-	$(document).ready(function () {
-		
-		console.log(document.cookie)
-		
-		profile()
-			
-	});
-	
+        
+        
+    $(document).ready(function () {
+    	showList();
+    	setVideo();
+        
+    })
+    
+    
+    
+    function makeDiv(home) {
+    	
+    	let outDiv = $('<div />').addClass('anime__review__item');
+    	let pic = $('<div />').addClass('anime__review__item__pic');
+    		let img = $('<img />').attr("src","../template/img/review-1.jpg");
+    	$(pic).append(img);
+    	
+    	let txt = $('<div />').addClass('anime__review__item__text');
+    		let h6 = $('<h6 />').html(home.cmtAuthor);
+    			let cmtTime = $('<span />').html(home.cmtDate);
+    		let p = $('<p />').html(home.cmtContent);
+    	$(txt).append( $(h6).append($(cmtTime)), $(p) );
+    	
+    	$(outDiv).append(pic,txt);
+    	
+    	$('.anime__details__review').append(outDiv);
+    	
+    }
+    
+    function showList() {
+    	
+    		//viNum 값을 어떻게 넘길지?
+    		//let param = 'viNum='+viNum;
+    		let param = 'viNum='+1;
+    		
+    		$.ajax({
+    			url: '../youShowListServlet',
+    			data: param,
+    			type: 'get',
+    			dataType: 'json',
+    			success: function (result) {
+    				console.log(result);
+    			},
+    			error: function (reject) {
+    				console.log(reject);
+    			}
+    			})
+    	
+    }
+    
+    function setVideo() {
+    	
+    	let viNum = '<%=viNum%>';
+    	let param = 'viNum='+viNum;
+    	
+    	$.ajax({
+    		url:'../youWatchServlet',
+    		data: param,
+    		success: function(result) {
+    			
+    			let data = JSON.parse(result);
+    			
+    			$('#viTitleSpan').text(data.title); // 영상 제목
+    	    	
+    	    	let vi = $('<video controls preload playsinline/>').attr('src','../template/videos/title'+data.viNum+'.mp4'); //영상 주소
+    	        
+    	    	$(vi).attr('width','1000px');
+    	    	$(vi).attr('height','500px');
+    	        $(vi).attr('poster','../template/thumbnail/'+data.tnTitle); //섬네일
+    	    	
+    	    	$('.anime__video__player').append(vi);
+    		},
+    		error: function() {
+    			
+    		}
+    	});
+    	
+    	
+
+    }
+    
 	function profile () {
 		
 		let email, emailA, emailId;
@@ -298,101 +372,21 @@
 
 	}
 
-
 	function logout () {
 	
 	
 		if (confirm('로그아웃 하시겠습니까?')) {
 			
-			document.cookie = 'email=; author=; expires=0; path=/';
+			document.cookie = 'email=; expires=0; path=/';
+			document.cookie = 'author=; expires=0; path=/';
 			window.location.href="homepage.html";
 		
 		}
 		
 	}
     
-        function logIn (e) {
-
-            e.preventDefault();
-    	
-            let email = $('.input__item input').eq(0).val();
-            let pw = $('.input__item input').eq(1).val();
-
-            let param = 'email='+email+'&pw='+pw;
-
-            $.ajax({
-                url:'../youSigninServlet',
-                type: 'post',
-                data: param,
-                dataType: 'json',
-                success: function(result) {
-                	let data = JSON.parse(result);
-                	
-                    if(data.code == "success") {
-                    	
-                        setCookie('email', data.email);
-                        
-                        setCookie('author', data.author);
-                        
-                        alert("로그인 성공");
-                        window.location.href="homepage.html";
-                        
-                    } else {
-                        $('.input__item input').val('');
-                        alert("로그인 실패");
-                    }
-                },
-                error: function (reject) {
-                    console.log(reject);
-                }
-            });
-
-        }
-        
-        	function setCookie (cname, cval) {
-
-    			const times = 3;
-    			const d = new Date();
-    			//d.setTime(d.getTime() + 1000 * 60 * 60 * times);
-    			d.setTime(d.getTime() + 1000 );
-    			console.log(d.toUTCString);
-    			document.cookie = cname + '=' + cval + '; expires=' + d.toUTCString + '; path=/';
-    			
-    		}
-        	
-        	function getCookie (cname) {
-
-    			let cookies = document.cookie.split('; ');
-
-    			for (let i = 0 ; i < cookies.length ; i ++) {
-
-    				if(cookies[i].indexOf(cname) === 0) {
-
-    					let result = cookies[i].substring(cname.length+1);
-    					return result;
-
-    				}
-
-    			}
-
-    			return null;
-
-    		}
-        	
-        	function logout () {
-        		
-        		if (confirm('로그아웃 하시겠습니까?')) {
-        			
-        			document.cookie = 'email=; expires=0; path=/';
-        			document.cookie = 'author=; expires=0; path=/';
-        			window.location.href="homepage.html";
-        		
-        		}
-        		
-    		}
-        	
-        
     </script>
+
 </body>
 
 </html>

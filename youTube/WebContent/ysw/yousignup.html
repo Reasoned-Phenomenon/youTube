@@ -249,25 +249,52 @@
 	
 	function profile () {
 		
+		let email, emailA, emailId;
+		
 		if (document.cookie) {
 			
+			email = getCookie('email');
+			
+			if ( email ) {
+				
+			emailA = email.split('@');
+			emailId = emailA[0];
+			
+			}
+			
+            let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
+		
+            if (emailId) {
+                
+                $('#profile').html('');
+                $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
+                $('#profile').append(logoutBtn);
+                
+            }
+            
+            
+            
+		}
+		
+	}
+	
+	function getCookie (cname) {
+
 		let cookies = document.cookie.split('; ');
-		
-		let email = cookies[0].split('=');
-		let name = email[1].split('@');
-		let id = name[0];
-		
-		let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
-		
-		if (id) {
-			
-			$('#profile').html('');
-			$('#profile').append( $('<a />').append( $('<h6 />').html(id+'님').css('color','red') ) );
-			$('#profile').append(logoutBtn);
-			
+
+		for (let i = 0 ; i < cookies.length ; i ++) {
+
+			if(cookies[i].indexOf(cname) === 0) {
+
+				let result = cookies[i].substring(cname.length+1);
+				return result;
+
+			}
+
 		}
-		}
-		
+
+		return null;
+
 	}
 
 	function logout () {

@@ -127,8 +127,8 @@
                     <div class="breadcrumb__links">
                         <a href="homepage.html"><i class="fa fa-home"></i> Home</a>
                         <a href="#">Categories</a>
-                        <a href="#">Romance</a>
-                        <span>Fate Stay Night: Unlimited Blade</span>
+                        <a href="#">Cat</a>
+                        <span id="viTitleSpan"></span>
                     </div>
                 </div>
             </div>
@@ -142,36 +142,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="anime__video__player">
-                        <video id="player" playsinline controls data-poster="../template/videos/anime-watch.jpg">
-                            <source src="../template/videos/1.mp4" type="video/mp4" />
-                            <!-- Captions are optional -->
-                            <track kind="captions" label="English captions" src="#" srclang="en" default />
-                        </video>
+                    	<!-- 비디오 들어가는 곳 -->
                     </div>
-                    <div class="anime__details__episodes">
-                        <div class="section-title">
-                            <h5>List Name</h5>
-                        </div>
-                        <a href="#">Ep 01</a>
-                        <a href="#">Ep 02</a>
-                        <a href="#">Ep 03</a>
-                        <a href="#">Ep 04</a>
-                        <a href="#">Ep 05</a>
-                        <a href="#">Ep 06</a>
-                        <a href="#">Ep 07</a>
-                        <a href="#">Ep 08</a>
-                        <a href="#">Ep 09</a>
-                        <a href="#">Ep 10</a>
-                        <a href="#">Ep 11</a>
-                        <a href="#">Ep 12</a>
-                        <a href="#">Ep 13</a>
-                        <a href="#">Ep 14</a>
-                        <a href="#">Ep 15</a>
-                        <a href="#">Ep 16</a>
-                        <a href="#">Ep 17</a>
-                        <a href="#">Ep 18</a>
-                        <a href="#">Ep 19</a>
-                    </div>
+                    
                 </div>
             </div>
             <div class="row">
@@ -262,8 +235,12 @@
     
     <script>
     
+        
+        
     $(document).ready(function () {
     	showList();
+    	setVideo();
+        
     })
     
     
@@ -290,7 +267,8 @@
     function showList() {
     	
     		//viNum 값을 어떻게 넘길지?
-    		let param = 'viNum='+viNum;
+    		//let param = 'viNum='+viNum;
+    		let param = 'viNum='+1;
     		
     		$.ajax({
     			url: '../youShowListServlet',
@@ -307,6 +285,86 @@
     	
     }
     
+    function setVideo() {
+    	
+    	$.ajax({
+    		
+    	});
+    	
+    	$('#viTitleSpan').text('타이틀 여기에 넣으세요!'); // 영상 제목
+    	
+    	let vi = $('<video controls preload playsinline/>').attr('src','../template/videos/title1.mp4'); //영상 주소
+        
+    	$(vi).attr('width','1000px');
+    	$(vi).attr('height','500px');
+        $(vi).attr('poster','../template/thumbnail/tntitle1.jpg'); //섬네일
+    	
+    	$('.anime__video__player').append(vi);
+
+    }
+    
+	function profile () {
+		
+		let email, emailA, emailId;
+		
+		if (document.cookie) {
+			
+			email = getCookie('email');
+			
+			if ( email ) {
+				
+			emailA = email.split('@');
+			emailId = emailA[0];
+			
+			}
+			
+            let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
+		
+            if (emailId) {
+                
+                $('#profile').html('');
+                $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
+                $('#profile').append(logoutBtn);
+                
+            }
+            
+            
+            
+		}
+		
+	}
+	
+	function getCookie (cname) {
+
+		let cookies = document.cookie.split('; ');
+
+		for (let i = 0 ; i < cookies.length ; i ++) {
+
+			if(cookies[i].indexOf(cname) === 0) {
+
+				let result = cookies[i].substring(cname.length+1);
+				return result;
+
+			}
+
+		}
+
+		return null;
+
+	}
+
+	function logout () {
+	
+	
+		if (confirm('로그아웃 하시겠습니까?')) {
+			
+			document.cookie = 'email=; expires=0; path=/';
+			document.cookie = 'author=; expires=0; path=/';
+			window.location.href="homepage.html";
+		
+		}
+		
+	}
     
     </script>
 

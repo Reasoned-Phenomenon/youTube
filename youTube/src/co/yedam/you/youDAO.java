@@ -251,4 +251,44 @@ public List<youCommentVO> showComment(int viNum) {
 		return list;
 		
 	}
+
+	public youHomeVO getVideo (int viNum) {
+		
+		connect();
+		
+		String sql = "SELECT * FROM home WHERE vi_num=?";
+		
+		youHomeVO vo = new youHomeVO();	
+		
+		try {
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, viNum);
+			
+			rs= psmt.executeQuery();
+			
+			if(rs.next()) {
+				
+			vo.setViNum(rs.getInt("vi_num"));	
+			vo.setAuthor(rs.getString("author"));	
+			vo.setTitle(rs.getString("title"));	
+			vo.setTnTitle(rs.getString("tn_title"));	
+			vo.setViTitle(rs.getString("vi_title"));	
+			vo.setLikeIt(rs.getInt("like_it"));	
+			vo.setUploadDate(rs.getString("upload_date"));	
+			vo.setViewNum(rs.getInt("view_num"));	
+			vo.setCommentCnt(rs.getInt("comment_cnt"));	
+				
+			}
+		
+			return vo;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		
+		return vo;
+	}
 }
