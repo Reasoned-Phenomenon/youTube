@@ -2,8 +2,6 @@
 function profile () {
 		
     let email, emailA, emailId;
-    
-    if (document.cookie) {
         
         email = getCookie('email');
         
@@ -13,21 +11,24 @@ function profile () {
         emailId = emailA[0];
         
         }
-        
-        let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
     
         if (emailId) {
             
             $('#profile').html('');
             $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
+            
+            let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
             $('#profile').append(logoutBtn);
             
-        }
-        
-        
-        
-    }
-    
+    	} else {
+    	
+    		$('#profile').html('');
+    		
+    		let loginBtn = $('<a />').attr('href','youlogin.html').html('<button class="material-icons">login</button>');
+    		$('#profile').append(loginBtn);
+    		
+    	}
+    	
 }
 
 // 쿠키 가져오기

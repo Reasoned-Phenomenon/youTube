@@ -9,7 +9,7 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yoo | Tube</title>
+    <title>You | Tube</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -26,46 +26,9 @@
     <link rel="stylesheet" href="../template/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/style.css" type="text/css">
     
-    <!-- Google Icons -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-    @font-face {
-	  font-family: 'Material Icons';
-	  font-style: normal;
-	  font-weight: 400;
-	  /*src: url(https://example.com/MaterialIcons-Regular.eot); For IE6-8 */
-	  src: local('Material Icons'),
-	    local('MaterialIcons-Regular')
-	    /*url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-	    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-	    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype')*/;
-	}
-	.material-icons {
-	  font-family: 'Material Icons';
-	  font-weight: normal;
-	  font-style: normal;
-	  font-size: 30px;  /* Preferred icon size */
-	  display: inline-block;
-	  line-height: 1;
-	  text-transform: none;
-	  letter-spacing: normal;
-	  word-wrap: normal;
-	  white-space: nowrap;
-	  direction: ltr;
-	  color: red;
-	
-	  /* Support for all WebKit browsers. */
-	  -webkit-font-smoothing: antialiased;
-	  /* Support for Safari and Chrome. */
-	  text-rendering: optimizeLegibility;
-	
-	  /* Support for Firefox. */
-	  -moz-osx-font-smoothing: grayscale;
-	
-	  /* Support for IE. */
-	  font-feature-settings: 'liga';
-	}
-    </style>
+    <!--google icon-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/google.css" type="text/css">
 
 </head>
 
@@ -81,47 +44,9 @@
     </div>
 
     <!-- Header Section Begin -->
-   <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="homepage.html">
-                            <img src="../upload/JORDY.gif" height="60px" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li><a href="homepage.html">Homepage</a></li>
-                                <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Categories</a></li>
-                                        <li><a href="#">Anime Details</a></li>
-                                        <li><a href="#">Anime Watching</a></li>
-                                        <li><a href="uploadpage.html">Upload</a></li>
-                                        <li><a href="yousignup.html">Sign Up</a></li>
-                                        <li><a href="youlogin.html">Login</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Our Blog</a></li>
-                                <li><a href="#">Contacts</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__right">
-                        <span id="profile">
-                        	<a href="youlogin.html"><button class="material-icons">login</button></a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
+    <!-- 메뉴바 -->
+    <header class="header">
+
     </header>
     <!-- Header End -->
 
@@ -185,49 +110,25 @@
     </section>
     <!-- Anime Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="page-up">
-            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="footer__logo">
-                        <a href="homepage.html"><img src="../upload/JORDY.gif" height="60px" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer__nav">
-                        <ul>
-                            <li class="active"><a href="homepage.html">Homepage</a></li>
-                            <li><a href="#">Categories</a></li>
-                            <li><a href="#">Our Blog</a></li>
-                            <li><a href="#">Contacts</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+<!-- Footer Section Begin -->
+<footer class="footer">
+<div class="page-up">
+<a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+</div>
 
-                  </div>
-              </div>
-          </div>
-      </footer>
-      <!-- Footer Section End -->
+<div class="container">
+<div class="row">
 
-      <!-- Search model Begin -->
-      <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
+<div class="col-lg-3">
+<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+</div>
+
+</div>
+</div>
+</footer>
+<!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <script src="../template/js/jquery-3.3.1.min.js"></script>
@@ -239,17 +140,24 @@
     <script src="../template/js/owl.carousel.min.js"></script>
     <script src="../template/js/main.js"></script>
     
-    <script>
+	<!--yoo-->   
+    <script src="js/you-hf.js"></script>
+	<script src="js/you-login.js"></script>
     
-        
+    <script>
         
     $(document).ready(function () {
+    	
+    	console.log(document.cookie);
+    	
+		makeHeader ();
+        makeFooter ();
+		profile();
+		
     	showList();
     	setVideo();
         
     })
-    
-    
     
     function makeDiv(home) {
     	
@@ -318,72 +226,7 @@
     		}
     	});
     	
-    	
-
     }
-    
-	function profile () {
-		
-		let email, emailA, emailId;
-		
-		if (document.cookie) {
-			
-			email = getCookie('email');
-			
-			if ( email ) {
-				
-			emailA = email.split('@');
-			emailId = emailA[0];
-			
-			}
-			
-            let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
-		
-            if (emailId) {
-                
-                $('#profile').html('');
-                $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
-                $('#profile').append(logoutBtn);
-                
-            }
-            
-            
-            
-		}
-		
-	}
-	
-	function getCookie (cname) {
-
-		let cookies = document.cookie.split('; ');
-
-		for (let i = 0 ; i < cookies.length ; i ++) {
-
-			if(cookies[i].indexOf(cname) === 0) {
-
-				let result = cookies[i].substring(cname.length+1);
-				return result;
-
-			}
-
-		}
-
-		return null;
-
-	}
-
-	function logout () {
-	
-	
-		if (confirm('로그아웃 하시겠습니까?')) {
-			
-			document.cookie = 'email=; expires=0; path=/';
-			document.cookie = 'author=; expires=0; path=/';
-			window.location.href="homepage.html";
-		
-		}
-		
-	}
     
     </script>
 

@@ -36,47 +36,9 @@
     </div>
 
     <!-- Header Section Begin -->
+    <!-- 메뉴바 -->
     <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="homepage.html">
-                            <img src="../template/img/logo.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li><a href="homepage.html">Homepage</a></li>
-                                <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Categories</a></li>
-                                        <li><a href="#">Anime Details</a></li>
-                                        <li><a href="#">Anime Watching</a></li>
-                                        <li><a href="uploadpage.html">Upload</a></li>
-                                        <li><a href="yousignup.html">Sign Up</a></li>
-                                        <li><a href="youlogin.html">Login</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Our Blog</a></li>
-                                <li><a href="#">Contacts</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__right">
-                        <span id="profile">
-                        	<a href="youlogin.html"><button class="material-icons">login</button></a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
+
     </header>
     <!-- Header End -->
 
@@ -147,49 +109,25 @@
     </section>
     <!-- Signup Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="page-up">
-            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="footer__logo">
-                        <a href="./index.html"><img src="../template/img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer__nav">
-                        <ul>
-                            <li class="active"><a href="./index.html">Homepage</a></li>
-                            <li><a href="./categories.html">Categories</a></li>
-                            <li><a href="./blog.html">Our Blog</a></li>
-                            <li><a href="#">Contacts</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+<!-- Footer Section Begin -->
+<footer class="footer">
+<div class="page-up">
+<a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+</div>
 
-                  </div>
-              </div>
-          </div>
-      </footer>
-      <!-- Footer Section End -->
+<div class="container">
+<div class="row">
 
-      <!-- Search model Begin -->
-      <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
+<div class="col-lg-3">
+<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+</div>
+
+</div>
+</div>
+</footer>
+<!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <script src="../template/js/jquery-3.3.1.min.js"></script>
@@ -202,6 +140,7 @@
     <script src="../template/js/main.js"></script>
 
     <!--yoo-->
+    <script src="js/you-hf.js"></script>
     <script src="js/you-login.js"></script>
     
     
@@ -210,7 +149,8 @@
 	$(document).ready(function () {
 		
 		console.log(document.cookie);
-		
+		makeHeader ();
+        makeFooter ();
 		profile();
 			
 	});

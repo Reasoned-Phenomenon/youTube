@@ -78,5 +78,34 @@ footer
 
 function makeFooter () {
 
+    let cl3Div1 = $('<div />').addClass('col-lg-3');
+        let logoDiv = $('<div />').addClass('footer__logo').html('<a href="homepage.html"><img src="../upload/JORDY.gif" height="60px" alt=""></a>');
     
+    let cl6Div = $('<div />').addClass('col-lg-6');
+        let navDiv = $('<div />').addClass('footer__nav');
+            let navUl = $('<ul />');
+                let navli1 = $('<li />').addClass('active').html('<a href="homepage.html">Homepage</a>');
+                let navli2 = $('<li />').html('<a href="#">Categories</a>');
+                let navli3 = $('<li />').html('<a href="#">Our Blog</a>');
+                let navli4 = $('<li />').html('<a href="#">Contacts</a>');
+
+    $('.footer .container .row').prepend(
+    
+                $(cl3Div1).append(
+                    $(logoDiv)),
+
+                $(cl6Div).append(
+                    $(navDiv).append(
+                        $(navUl).append(
+                            $(navli1),
+                            $(navli2),
+                            $(navli3),
+                            $(navli4)
+                        )
+                    )
+                )
+            )
+        
+    
+
 }
