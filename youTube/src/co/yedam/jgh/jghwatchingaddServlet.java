@@ -32,7 +32,7 @@ public class jghwatchingaddServlet extends HttpServlet {
       response.setContentType("text/html; charset=UTF-8");
       
       PrintWriter out = response.getWriter();
-      Gson gson = new GsonBuilder().create();
+      Gson gson = new GsonBuilder().create(); 
       
       jghwatchingDAO dao = new jghwatchingDAO();
       
