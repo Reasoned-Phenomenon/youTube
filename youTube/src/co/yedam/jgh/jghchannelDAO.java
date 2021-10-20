@@ -77,16 +77,6 @@ public class jghchannelDAO extends DAO {
 		    comment.setCommentDay(lastDay);
 			System.out.println(lastDay);
 			
-		//	stmt = conn.createStatement();
-		//	String sql2 = "select content from channel";
-		//	rs = stmt.executeQuery(sql2);
-		 //   String content = null;
-		    
-		 //   while (rs.next()) {
-		 //   	content = rs.getString("content");
-		 //   }
-		//	comment.setContent(content);
-		//	System.out.println(content);
 		    
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -97,4 +87,30 @@ public class jghchannelDAO extends DAO {
 		
 		return comment;
 	}
+	
+	// 댓글 삭제.
+	public int deleteComment (int userNum) {
+		
+		connect();
+		try {
+			psmt = conn.prepareStatement("delete from channel where user_num=?");
+			psmt.setInt(1, userNum);
+			int r = psmt.executeUpdate();
+			
+			System.out.println(r + "건 삭제 되었습니다.");
+			
+			return userNum;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			return -1;
+			
+		} finally {
+			disconnect();
+		}
+		
+	
+	}
+
 }

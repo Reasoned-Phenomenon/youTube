@@ -32,6 +32,45 @@
 <link rel="stylesheet" href="../template/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../template/css/style.css" type="text/css">
+
+ <style>
+    @font-face {
+	  font-family: 'Material Icons';
+	  font-style: normal;
+	  font-weight: 400;
+	  /*src: url(https://example.com/MaterialIcons-Regular.eot); For IE6-8 */
+	  src: local('Material Icons'),
+	    local('MaterialIcons-Regular')
+	    /*url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+	    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+	    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype')*/;
+	}
+	.material-icons {
+	  font-family: 'Material Icons';
+	  font-weight: normal;
+	  font-style: normal;
+	  font-size: 30px;  /* Preferred icon size */
+	  display: inline-block;
+	  line-height: 1;
+	  text-transform: none;
+	  letter-spacing: normal;
+	  word-wrap: normal;
+	  white-space: nowrap;
+	  direction: ltr;
+	  color: red;
+	
+	  /* Support for all WebKit browsers. */
+	  -webkit-font-smoothing: antialiased;
+	  /* Support for Safari and Chrome. */
+	  text-rendering: optimizeLegibility;
+	
+	  /* Support for Firefox. */
+	  -moz-osx-font-smoothing: grayscale;
+	
+	  /* Support for IE. */
+	  font-feature-settings: 'liga';
+	}
+    </style>
 </head>
 
 <body>
@@ -181,6 +220,7 @@
 							<div class="anime__review__item__text">
 								<h6>
 									Chris Curry - <span>1 Hour ago</span>
+								 <button class="material-icons-sharp" style="float:right">x</button>
 								</h6>
 								<p>whachikan Just noticed that someone categorized this as
 									belonging to the genre "demons" LOL</p>
@@ -193,6 +233,7 @@
 							<div class="anime__review__item__text">
 								<h6>
 									Lewis Mann - <span>5 Hour ago</span>
+									<button class="material-icons-sharp" style="float:right">x</button>
 								</h6>
 								<p>Finally it came out ages ago</p>
 							</div>
@@ -204,6 +245,7 @@
 							<div class="anime__review__item__text">
 								<h6>
 									Louis Tyler - <span>20 Hour ago</span>
+									<button class="material-icons-sharp" style="float:right">x</button>
 								</h6>
 								<p>Where is the episode 15 ? Slow update! Tch</p>
 							</div>
@@ -215,6 +257,7 @@
 							<div class="anime__review__item__text">
 								<h6>
 									Chris Curry - <span>1 Hour ago</span>
+									<button class="material-icons-sharp" style="float:right">x</button>
 								</h6>
 								<p>whachikan Just noticed that someone categorized this as
 									belonging to the genre "demons" LOL</p>
@@ -227,6 +270,7 @@
 							<div class="anime__review__item__text">
 								<h6>
 									Lewis Mann - <span>5 Hour ago</span>
+									<button class="material-icons-sharp" style="float:right">x</button>
 								</h6>
 								<p>Finally it came out ages ago</p>
 							</div>
@@ -238,6 +282,7 @@
 							<div class="anime__review__item__text">
 								<h6>
 									Louis Tyler - <span>20 Hour ago</span>
+									<button class="material-icons-sharp" style="float:right">x</button>
 								</h6>
 								<p>Where is the episode 15 ? Slow update! Tch</p>
 							</div>
@@ -250,7 +295,7 @@
 						<form action="#">
 							<textarea placeholder="Your Comment"></textarea>
 							<button type="submit" onclick="textAdd(event)"><i class="fa fa-location-arrow"></i> 댓글등록</button>
-							<button type="submit" onclick="textDel(event)"><i class="fa fa-location-arrow"></i> 댓글삭제</button>
+							
 						</form>
 					</div>
 				</div>
@@ -375,6 +420,7 @@
         function makeCommentDiv(comment) {
         	let outDiv = document.createElement('div');
         	outDiv.className = "anime__review__item";
+        	outDiv.setAttribute('id',comment.userNum);
         	
         	let innerDiv = document.createElement('div');
         	innerDiv.className = "anime__review__item__text";
@@ -396,6 +442,19 @@
      	    span.innerText = comment.commentDay;
      	    console.log(span);
      	   
+     	    // x 아이콘 표현하기. => 누르면 삭제.
+     	    let span2 = document.createElement('button');
+     	    span2.className ="material-icons-sharp";
+     	    span2.innerText='x';
+     	    span2.id = "xspan"; 
+     	      
+     	    span2.setAttribute('onclick', 'textDel('+comment.cmtNum+')');  // 
+     	    span2.setAttribute('style','float:right');
+     	   
+     	    h6.appendChild(span2);
+     	      
+     	    console.log(span2);
+     	    
      	   
      	    let p = document.createElement('p');
      	    p.innerText = comment.content;
@@ -468,13 +527,31 @@
            });
         }
         
-        // 댓글삭제 버튼.
-        function textDel (event) {
-        	e.preventDefault();
-        	
-        	
-        	
-        }
+        //댓글삭제 버튼.
+        function textDel (deletenum) { 
+     	  
+     	   event.preventDefault();
+     	   console.log(deletenum);  
+     	
+     	let xhtp = new XMLHttpRequest();
+     	xhtp.open('get','../channeldeleteServlet?userNum='+ deletenum);
+     	xhtp.send();
+     	xhtp.onload = function() {
+     		let data = JSON.parse(xhtp.responseText);
+     		if (data.retcode =='fail') {
+     			window.alert('에러발생.');
+     			return;
+     		}
+     		console.log(data.userNum);
+     		let r = document.getElementById(data.userNum) ;
+     		console.log(r);
+     		
+     		// 화면에서 삭제.
+     		document.getElementById(deletenum).remove(); 
+     		
+     	}
+     	
+       }  
         </script>
 
 </body>
