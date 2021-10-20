@@ -23,10 +23,15 @@ public class jghwatchingDAO extends DAO {
 			while (rs.next()) {
 
 				jghwatchinglVO vo = new jghwatchinglVO();
-				vo.setNum(rs.getInt("num"));
-				vo.setId(rs.getString("id"));
+				
+				vo.setCmtNum(rs.getInt("cmt_num"));
+				vo.setAuthor(rs.getString("author"));
+				vo.setUserNum(rs.getInt("user_num"));
+				vo.setViNum(rs.getInt("vi_num"));
 				vo.setContent(rs.getString("content"));
-				vo.setCommentDay(rs.getString("comment_day"));
+				vo.setCmtDay(rs.getString("cmt_day"));
+				
+		
 
 				list.add(vo);
 			}
@@ -48,35 +53,39 @@ public class jghwatchingDAO extends DAO {
 			int curNum = 0;
 
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select MAX(num) From commentboard order by 1 desc");
+			rs = stmt.executeQuery("select MAX(cmt_num) From commentboard order by 1 desc");
 
 			if (rs.next()) {
 
-				curNum = rs.getInt("MAX(num)") + 1;
+				curNum = rs.getInt("MAX(cmt_num)") + 1;
 
 			}
 
-			psmt = conn.prepareStatement("insert into commentboard values(?,?,?,sysdate)");
+			psmt = conn.prepareStatement("insert into commentboard values(?,?,?,?,?,sysdate)");
+		
 			psmt.setInt(1, curNum);
-			psmt.setString(2, comment.getId());
-			psmt.setString(3, comment.getContent());
-
+			psmt.setString(2, comment.getAuthor());
+			psmt.setInt(3, comment.getUserNum());
+			psmt.setInt(4, comment.getViNum());
+			psmt.setString(5, comment.getContent());
+			
 			int r = psmt.executeUpdate();
 			System.out.println(r + "건 입력되었습니다.");
 			//
 
 			stmt = conn.createStatement();
-			String sql = "select comment_day from commentboard";
+			String sql = "select cmt_day from commentboard";
 			rs = stmt.executeQuery(sql);
 			String lastDay = null;
 
 			while (rs.next()) {
 
-				lastDay = rs.getString("comment_day");
+				lastDay = rs.getString("cmt_day");
 
 			}
-
-			comment.setCommentDay(lastDay);
+			
+			comment.setCmtNum(curNum);
+			comment.setCmtDay(lastDay);
 			System.out.println(lastDay);
 
 		} catch (SQLException e) {
@@ -91,17 +100,17 @@ public class jghwatchingDAO extends DAO {
 	
 	
 	// 댓글 삭제.
-	public int deleteComment (int num) {
+	public int deleteComment (int cmtNum) {
 		
 		connect();
 		try {
-			psmt = conn.prepareStatement("delete from commentboard where num=?");
-			psmt.setInt(1, num);
+			psmt = conn.prepareStatement("delete from commentboard where cmt_num=?");
+			psmt.setInt(1, cmtNum);
 			int r = psmt.executeUpdate();
 			
 			System.out.println(r + "건 삭제 되었습니다.");
 			
-			return num;
+			return cmtNum;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

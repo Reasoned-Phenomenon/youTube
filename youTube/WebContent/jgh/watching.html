@@ -275,6 +275,7 @@
    function makeCommentDiv(comment) {
       let outDiv = document.createElement('div');
       outDiv.className = "anime__review__item";
+      outDiv.setAttribute('id',comment.cmtNum);
       
       let innerDiv = document.createElement('div');
       innerDiv.className = "anime__review__item__text";
@@ -288,25 +289,26 @@
       
  
       let h6 = document.createElement('h6')
-      h6.innerText = comment.id + ' - ';
+      h6.innerText = comment.author + ' - ';
       //console.log(h6);
       
       let span = document.createElement('span');
-      span.innerText = comment.commentDay;
+      span.innerText = comment.cmtDay;
       //console.log(span);
       
-      // x 아이콘 표현하기. => 누르면 삭제가 되어야 한다.
+      // x 아이콘 표현하기. => 누르면 삭제.
       let span2 = document.createElement('button');
       span2.className ="material-icons-sharp";
       span2.innerText='x';
-      span2.setAttribute('onclick', textDel());
+      span2.id = "xspan"; 
+      
+      span2.setAttribute('onclick', 'textDel('+comment.cmtNum+')');  // 
       span2.setAttribute('style','float:right');
    
       h6.appendChild(span2);
       
       console.log(span2);
-      //$(span2);
-      // $(h6).html('<span class="material-icons-outlined">x</span>');
+      
       
       let p = document.createElement('p');
       p.innerText = comment.content;
@@ -349,10 +351,10 @@
       event.preventDefault(); 
       
       let comment = document.getElementsByTagName('textarea')[0].value;
-      //console.log(comment);
+      console.log(comment);
       
-      let userId = "qwerty";  // 나중에 아이디값이랑 같이 넘기기.
-      let param = "id="+userId+"&content="+comment;
+      let author = "qwerty";  // 나중에 아이디값이랑 같이 넘기기.
+      let param = "author="+author+"&content="+comment;
       
       $.ajax({
          url:'../jghwatchingaddServlet',
@@ -361,7 +363,7 @@
          dataType:'json',
          success: function (result) {
             console.log("성공");
-            
+            console.log(result);
             let commentDiv = makeCommentDiv(result);
             //console.log(commentDiv);
            
@@ -375,15 +377,17 @@
       });
       
    }
+    
    // 삭제버튼을 누르면 삭제 함수를 부를 수 있게 하는 함수를 만들기.
-   // function
-   
-    // 댓글삭제 버튼.
-   function textDel (deletenum) { //
+
+  //댓글삭제 버튼.
+   function textDel (deletenum) { 
+	  
 	   event.preventDefault();
-	   
+	   console.log(deletenum);
+	
 	let xhtp = new XMLHttpRequest();
-	xhtp.open('get','../jghwatchingdeleteServlet');
+	xhtp.open('get','../jghwatchingdeleteServlet?cmtNum='+ deletenum);
 	xhtp.send();
 	xhtp.onload = function() {
 		let data = JSON.parse(xhtp.responseText);
@@ -391,10 +395,16 @@
 			window.alert('에러발생.');
 			return;
 		}
-		document.getElementById(deletenum).remove(); // 
+		console.log(data.cmtNum);
+		let r = document.getElementById(data.cmtNum) ;
+		console.log(r);
+		
+		// 화면에서 삭제.
+		document.getElementById(deletenum).remove(); 
+		
 	}
 	
-   }
+  }  
    
    
  </script>

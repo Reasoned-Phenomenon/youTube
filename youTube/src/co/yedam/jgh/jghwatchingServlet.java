@@ -37,7 +37,7 @@ public class jghwatchingServlet extends HttpServlet {
 		
 		jghwatchingDAO dao = new jghwatchingDAO();
 		List<jghwatchinglVO> list = dao.showList();
-		
+		System.out.println(list);
 		out.println(gson.toJson(list));
 	}
 

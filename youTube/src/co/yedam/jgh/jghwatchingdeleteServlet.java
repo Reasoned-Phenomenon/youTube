@@ -36,16 +36,20 @@ public class jghwatchingdeleteServlet extends HttpServlet {
 	      
 	      jghwatchingDAO dao = new jghwatchingDAO();
 	      
-	      int num = Integer.parseInt(request.getParameter("num"));
+	      int cmtNum = Integer.parseInt(request.getParameter("cmtNum"));
+	      System.out.println(cmtNum);
 	      
-	       if(dao.deleteComment(num) == -1) {
+	      if(dao.deleteComment(cmtNum) == -1) {
 	    	  out.println("{\"retcode\":\"fail\"}");
 	    	  return;
-	      } 
-	       
-	      dao.deleteComment(num);
+	    	  
+	      } else {
+	    	  out.println("{\"retcode\":\"success\":\"cmtNum\"}"+ cmtNum);
+	      }
 	      
-	      out.println(gson.toJson(num));
+	     // dao.deleteComment(cmtNum);
+	      
+	     // out.println(gson.toJson(cmtNum));
 	}
 
 	

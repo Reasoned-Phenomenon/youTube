@@ -36,13 +36,13 @@ public class jghwatchingaddServlet extends HttpServlet {
       
       jghwatchingDAO dao = new jghwatchingDAO();
       
-      String id = request.getParameter("id");
+      String author = request.getParameter("author");
       String content = request.getParameter("content");
       
       jghwatchinglVO comment = new jghwatchinglVO();
-     // System.out.println(id);
+      System.out.println(content);
       
-      comment.setId(id);
+      comment.setAuthor(author);
       comment.setContent(content);
       
       dao.insertcomment(comment);
