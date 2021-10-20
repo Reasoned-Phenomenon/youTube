@@ -23,48 +23,11 @@
     <link rel="stylesheet" href="../template/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/style.css" type="text/css">
-    
-    <!-- Google Icons -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-    @font-face {
-	  font-family: 'Material Icons';
-	  font-style: normal;
-	  font-weight: 400;
-	  /*src: url(https://example.com/MaterialIcons-Regular.eot); For IE6-8 */
-	  src: local('Material Icons'),
-	    local('MaterialIcons-Regular')
-	    /*url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-	    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-	    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype')*/;
-	}
-	.material-icons {
-	  font-family: 'Material Icons';
-	  font-weight: normal;
-	  font-style: normal;
-	  font-size: 30px;  /* Preferred icon size */
-	  display: inline-block;
-	  line-height: 1;
-	  text-transform: none;
-	  letter-spacing: normal;
-	  word-wrap: normal;
-	  white-space: nowrap;
-	  direction: ltr;
-	  color: red;
-	
-	  /* Support for all WebKit browsers. */
-	  -webkit-font-smoothing: antialiased;
-	  /* Support for Safari and Chrome. */
-	  text-rendering: optimizeLegibility;
-	
-	  /* Support for Firefox. */
-	  -moz-osx-font-smoothing: grayscale;
-	
-	  /* Support for IE. */
-	  font-feature-settings: 'liga';
-	}
-    </style>
 
+    <!--google icon-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/google.css" type="text/css">
+    
 </head>
 
 <body>
@@ -76,54 +39,7 @@
     <!-- Header Section Begin -->
     <!-- 메뉴바 -->
     <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="homepage.html">
-                            <img src="../upload/JORDY.gif" height="60px" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class="active"><a href="homepage.html">Homepage</a></li>
-                                <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Categories</a></li>
-                                        <li><a href="#">Anime Details</a></li>
-                                        <li><a href="#">Anime Watching</a></li>
-                                        <li><a href="uploadpage.html">Upload</a></li>
-                                        <li><a href="yousignup.html">Sign Up</a></li>
-                                        <li><a href="youlogin.html">Login</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Our Blog</a></li>
-                                <li><a href="#">Contacts</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__right">
-                    
-                    	<span id="profile">
-                        	<a href="youlogin.html"><button class="material-icons">login</button></a>
-                        </span>
-                       
-                        
-                        
-                        <!-- 돋보기부분 주석처리
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a> 
-                        -->
-                        
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
+
     </header>
     <!-- Header End -->
 
@@ -266,19 +182,6 @@
   </footer>
   <!-- Footer Section End -->
 
-  <!-- 업로드 폼으로 바꾸는 것도 괜찮을듯. -->
-  <!-- Search model Begin -->
-  <div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch"><i class="icon_close"></i></div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
-            <div id="uploadForm"></div>
-        </form>
-    </div>
-</div>
-<!-- Search model end -->
-
 <!-- Js Plugins -->
 <script src="../template/js/jquery-3.3.1.min.js"></script>
 <script src="../template/js/bootstrap.min.js"></script>
@@ -289,222 +192,40 @@
 <script src="../template/js/owl.carousel.min.js"></script>
 <script src="../template/js/main.js"></script>
 
+<!--yoo-->
+<script src="js/you-hf.js"></script>
+<script src="js/you-login.js"></script>
+<script src="js/you-home.js"></script>
+
 
 <script>
 
 	$(document).ready(function () {
 		
-		console.log(document.cookie)
-		
-		profile()
+		console.log(document.cookie);
+		makeHeader ();
+		profile();
+
+        $.ajax({
+            url:'../youHomeServlet',
+            dataType:'json',
+            success: function (result) {
+
+                data = result;
+
+                for ( let datum of result) {
+                    trendingNow(datum);
+                    topView(datum);
+                }
+
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        });
 			
 	});
-	
-	function profile () {
-		
-		let email, emailA, emailId;
-		
-		if (document.cookie) {
-			
-			email = getCookie('email');
-			
-			if ( email ) {
-				
-			emailA = email.split('@');
-			emailId = emailA[0];
-			
-			}
-			
-            let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
-		
-            if (emailId) {
-                
-                $('#profile').html('');
-                $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
-                $('#profile').append(logoutBtn);
-                
-            }
-            
-            
-            
-		}
-		
-	}
-	
-	function getCookie (cname) {
-
-		let cookies = document.cookie.split('; ');
-
-		for (let i = 0 ; i < cookies.length ; i ++) {
-
-			if(cookies[i].indexOf(cname) === 0) {
-
-				let result = cookies[i].substring(cname.length+1);
-				return result;
-
-			}
-
-		}
-
-		return null;
-
-	}
-
-	function logout () {
-	
-	
-		if (confirm('로그아웃 하시겠습니까?')) {
-			
-			document.cookie = 'email=; expires=0; path=/';
-			document.cookie = 'author=; expires=0; path=/';
-			window.location.href="homepage.html";
-		
-		}
-		
-	}
-	
-    let data;
-
-    $.ajax({
-        url:'../youHomeServlet',
-        dataType:'json',
-        success: function (result) {
-
-            data = result;
-
-            for ( let datum of result) {
-            	trendingNow(datum);
-                topView(datum);
-            }
-
-        },
-        error: function (reject) {
-            console.log(reject);
-        }
-    });
-
-    function trendingNow (home) {
-    //생성
-        //sm6
-     let sm6 = $('<div />').addClass('col-lg-4 col-md-6 col-sm-6');
-
-        //pi
-        let pi = $('<div />').addClass('product__item');
-            //bg
-            let bg = $('<div />').addClass('product__item__pic set-bg');
-                $(bg).attr('data-setbg',"../upload/"+home.tnTitle); // 섬네일-main.js에서 일괄적용.
-                $(bg).css('background-image', 'url(../upload/'+home.tnTitle+')'); // 섬네일(수동)
-                //$(bg).html('<a href="'+'#'+'"></a>');             //영상페이지 주소 넣어서 영상클릭시에도 이동하게하기
-                let ep = $('<div />').addClass('ep');
-                    ep.html('10/10');                                                   //회차정보, 임의로 넣어둠
-                let comment = $('<div />').addClass('comment');
-                    let ic = $('<i />').addClass('fa fa-comments'); 
-                    $(ic).html(home.commentCnt);                                        //댓글수
-                let view = $('<div />').addClass('view');
-                    let iv = $('<i />').addClass('fa fa-eye').html(home.viewNum);        //조회수
-
-            //pit
-            let pit = $('<div />').addClass('product__item__text');
-                let ul = $('<ul />').append(
-                    $('<li />').html('대분류'),                                             //분류1
-                    $('<li />').html('소분류')                                              //분류2
-                );
-                let h5 = $('<h5 />').append(
-                    $('<a />').attr('onclick', 'viNumSender('+home.viNum+')').html(home.title)               //영상페이지 주소,제목 넣기
-                );
-
-    //구조
-    $(sm6).append(
-
-        $(pi).append(
-
-            $(bg).append(
-                ep,
-                $(comment).append(ic),
-                $(view).append(iv)
-            ),
-
-            $(pit).append(ul, h5)
-        )
-    );
-    
-    $('.trending__product').children().eq(1).append(sm6);
-
-}
-
-
-function topView (home) {
-    //생성
-        //sv
-     let sv = $('<div />').addClass('product__sidebar__view__item set-bg mix').attr('data-setbg','../template/img/sidebar/tv-1.jpg');
-     $(sv).css('background-image', 'url(../upload/'+home.tnTitle+')');
-
-        //ep
-        let ep = $('<div />').addClass('ep');
-        	ep.html('10/10'); //에피소드 숫자
-            
-        // view    
-        let view = $('<div />').addClass('view');
-            let icon = $('<i />').addClass('fa fa-eye');
-       	view.html(home.viewNum);
-       	
-       	//h5
-       	let h5 = $('<h5 />')
-       		//let a = $('<a />').attr('href', '#').html(home.title)
-       		let a = $('<a />').attr('onclick', 'viNumSender('+home.viNum+')').html(home.title) //링크 걸어주기
-            
-
-    //구조
-    $(sv).append(
-    		ep,
-    		$(view).append(icon),
-            $(h5).append(a)
-    );
-    
-    
-    $('.filter__gallery').append(sv);
-
-}
-	
-function viNumSender(viNum) {
-	
-	setCookie('viNum',viNum);
-	
-	let param = 'viNum='+viNum;
-	
-	//location.href="../youwatching.html/?viNum="+viNum;
-	
-	  $.ajax({
-		url:'../youWatchServlet',
-		data: param,
-		type:'get',
-		dataType:'json',
-		success: function (result) {
-			console.log(result.viNum);
-			window.location.href="youwatching.jsp?viNum="+result.viNum;
-		},
-		error: function (reject) {
-			console.log(reject);
-		}
-		
-	})
-	
-	
-	
-	
-	
-}
-
-function setCookie (cname, cval) {
-
-	const times = 3;
-	const d = new Date();
-	//d.setTime(d.getTime() + 1000 * 60 * 60 * times);
-	d.setTime(d.getTime() + 1000 );
-	//console.log(d.toUTCString);
-	document.cookie = cname + '=' + cval + '; expires=' + d.toUTCString + '; path=/';
-	
-}
+	//
 </script>
 
 

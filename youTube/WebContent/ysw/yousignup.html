@@ -24,45 +24,9 @@
     <link rel="stylesheet" href="../template/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/style.css" type="text/css">
     
+    <!--google icon-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-    @font-face {
-	  font-family: 'Material Icons';
-	  font-style: normal;
-	  font-weight: 400;
-	  /*src: url(https://example.com/MaterialIcons-Regular.eot); For IE6-8 */
-	  src: local('Material Icons'),
-	    local('MaterialIcons-Regular')
-	    /*url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-	    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-	    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype')*/;
-	}
-	.material-icons {
-	  font-family: 'Material Icons';
-	  font-weight: normal;
-	  font-style: normal;
-	  font-size: 30px;  /* Preferred icon size */
-	  display: inline-block;
-	  line-height: 1;
-	  text-transform: none;
-	  letter-spacing: normal;
-	  word-wrap: normal;
-	  white-space: nowrap;
-	  direction: ltr;
-	  color: red;
-	
-	  /* Support for all WebKit browsers. */
-	  -webkit-font-smoothing: antialiased;
-	  /* Support for Safari and Chrome. */
-	  text-rendering: optimizeLegibility;
-	
-	  /* Support for Firefox. */
-	  -moz-osx-font-smoothing: grayscale;
-	
-	  /* Support for IE. */
-	  font-feature-settings: 'liga';
-	}
-    </style>
+    <link rel="stylesheet" href="css/google.css" type="text/css">
 </head>
 
 <body>
@@ -236,80 +200,22 @@
     <script src="../template/js/jquery.slicknav.js"></script>
     <script src="../template/js/owl.carousel.min.js"></script>
     <script src="../template/js/main.js"></script>
+
+    <!--yoo-->
+    <script src="js/you-login.js"></script>
+    
     
     <script>
     
 	$(document).ready(function () {
 		
-		console.log(document.cookie)
+		console.log(document.cookie);
 		
-		profile()
+		profile();
 			
 	});
 	
-	function profile () {
-		
-		let email, emailA, emailId;
-		
-		if (document.cookie) {
-			
-			email = getCookie('email');
-			
-			if ( email ) {
-				
-			emailA = email.split('@');
-			emailId = emailA[0];
-			
-			}
-			
-            let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
-		
-            if (emailId) {
-                
-                $('#profile').html('');
-                $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
-                $('#profile').append(logoutBtn);
-                
-            }
-            
-            
-            
-		}
-		
-	}
-	
-	function getCookie (cname) {
-
-		let cookies = document.cookie.split('; ');
-
-		for (let i = 0 ; i < cookies.length ; i ++) {
-
-			if(cookies[i].indexOf(cname) === 0) {
-
-				let result = cookies[i].substring(cname.length+1);
-				return result;
-
-			}
-
-		}
-
-		return null;
-
-	}
-
-	function logout () {
-	
-	
-		if (confirm('로그아웃 하시겠습니까?')) {
-			
-			document.cookie = 'email=; expires=0; path=/';
-			document.cookie = 'author=; expires=0; path=/';
-			window.location.href="homepage.html";
-		
-		}
-		
-	}
-    
+	   
     function signUp (e) {
     	
     	e.preventDefault();
@@ -360,8 +266,7 @@
         xhtp.send('email='+email+'&name='+name+'&birthDay='+birthDay+'&gender='+gender+'&pw='+pw);
 
     }
-    	
-    
+
     </script>
 
 </body>
