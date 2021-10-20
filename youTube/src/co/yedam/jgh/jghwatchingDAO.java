@@ -91,22 +91,23 @@ public class jghwatchingDAO extends DAO {
 	
 	
 	// 댓글 삭제.
-	public String deleteComment(String id) {
+	public int deleteComment (int num) {
 		
 		connect();
 		try {
-			psmt = conn.prepareStatement("delete from commentboard where id=?");
-			psmt.setString(1, id);
+			psmt = conn.prepareStatement("delete from commentboard where num=?");
+			psmt.setInt(1, num);
 			int r = psmt.executeUpdate();
 			
 			System.out.println(r + "건 삭제 되었습니다.");
 			
-			return id;
+			return num;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
-			return null;
+			return -1;
+			
 		} finally {
 			disconnect();
 		}

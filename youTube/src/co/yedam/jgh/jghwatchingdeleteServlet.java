@@ -36,11 +36,16 @@ public class jghwatchingdeleteServlet extends HttpServlet {
 	      
 	      jghwatchingDAO dao = new jghwatchingDAO();
 	      
-	      String id = request.getParameter("id");
+	      int num = Integer.parseInt(request.getParameter("num"));
 	      
-	      dao.deleteComment(id);
+	       if(dao.deleteComment(num) == -1) {
+	    	  out.println("{\"retcode\":\"fail\"}");
+	    	  return;
+	      } 
+	       
+	      dao.deleteComment(num);
 	      
-	      out.println(gson.toJson(id));
+	      out.println(gson.toJson(num));
 	}
 
 	

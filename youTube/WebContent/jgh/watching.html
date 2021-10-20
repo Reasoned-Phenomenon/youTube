@@ -23,6 +23,47 @@
     <link rel="stylesheet" href="../template/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../template/css/style.css" type="text/css">
+    
+    <!-- Google Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    @font-face {
+	  font-family: 'Material Icons';
+	  font-style: normal;
+	  font-weight: 400;
+	  /*src: url(https://example.com/MaterialIcons-Regular.eot); For IE6-8 */
+	  src: local('Material Icons'),
+	    local('MaterialIcons-Regular')
+	    /*url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+	    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+	    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype')*/;
+	}
+	.material-icons {
+	  font-family: 'Material Icons';
+	  font-weight: normal;
+	  font-style: normal;
+	  font-size: 30px;  /* Preferred icon size */
+	  display: inline-block;
+	  line-height: 1;
+	  text-transform: none;
+	  letter-spacing: normal;
+	  word-wrap: normal;
+	  white-space: nowrap;
+	  direction: ltr;
+	  color: red;
+	
+	  /* Support for all WebKit browsers. */
+	  -webkit-font-smoothing: antialiased;
+	  /* Support for Safari and Chrome. */
+	  text-rendering: optimizeLegibility;
+	
+	  /* Support for Firefox. */
+	  -moz-osx-font-smoothing: grayscale;
+	
+	  /* Support for IE. */
+	  font-feature-settings: 'liga';
+	}
+    </style>
 </head>
 
 <body>
@@ -142,7 +183,7 @@
                                 <img src="../template/img/anime/review-1.jpg" alt="">
                             </div>
                             <div class="anime__review__item__text">
-                                <h6>Chris Curry - <span>1 Hour ago</span></h6>
+                                <h6>Chris Curry - <span>1 Hour ago</span><button class="material-icons-sharp" style="float:right">x</button></h6>
                                 <p>whachikan Just noticed that someone categorized this as belonging to the genre
                                 "demons" LOL</p>
                             </div>
@@ -152,7 +193,7 @@
                                 <img src="../template/img/anime/review-2.jpg" alt="">
                             </div>
                             <div class="anime__review__item__text">
-                                <h6>Lewis Mann - <span>5 Hour ago</span></h6>
+                                <h6>Lewis Mann - <span>5 Hour ago</span><button class="material-icons-sharp" style="float:right">x</button></h6>
                                 <p>Finally it came out ages ago</p>
                             </div>
                         </div>
@@ -166,7 +207,7 @@
                             <textarea placeholder="Your Comment"></textarea>
                             
                             <button type="submit" onclick="textAdd(event)"><i class="fa fa-location-arrow"></i> 댓글등록</button>
-                            <button type="submit" onclick="textDel(event)"><i class="fa fa-location-arrow"></i> 댓글삭제</button>
+                            
                         </form>
                     </div>
                 </div>
@@ -245,8 +286,7 @@
       let img = document.createElement('img');
       img.setAttribute('src','../template/img/anime/review-1.jpg' );
       
-      
-      
+ 
       let h6 = document.createElement('h6')
       h6.innerText = comment.id + ' - ';
       //console.log(h6);
@@ -255,7 +295,18 @@
       span.innerText = comment.commentDay;
       //console.log(span);
       
+      // x 아이콘 표현하기. => 누르면 삭제가 되어야 한다.
+      let span2 = document.createElement('button');
+      span2.className ="material-icons-sharp";
+      span2.innerText='x';
+      span2.setAttribute('onclick', textDel());
+      span2.setAttribute('style','float:right');
+   
+      h6.appendChild(span2);
       
+      console.log(span2);
+      //$(span2);
+      // $(h6).html('<span class="material-icons-outlined">x</span>');
       
       let p = document.createElement('p');
       p.innerText = comment.content;
@@ -324,12 +375,25 @@
       });
       
    }
+   // 삭제버튼을 누르면 삭제 함수를 부를 수 있게 하는 함수를 만들기.
+   // function
    
     // 댓글삭제 버튼.
-   function textDel (event) {
-	   e.preventDefault();
+   function textDel (deletenum) { //
+	   event.preventDefault();
 	   
-	   
+	let xhtp = new XMLHttpRequest();
+	xhtp.open('get','../jghwatchingdeleteServlet');
+	xhtp.send();
+	xhtp.onload = function() {
+		let data = JSON.parse(xhtp.responseText);
+		if (data.retcode =='fail') {
+			window.alert('에러발생.');
+			return;
+		}
+		document.getElementById(deletenum).remove(); // 
+	}
+	
    }
    
    
