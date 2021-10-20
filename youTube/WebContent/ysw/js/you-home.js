@@ -87,16 +87,17 @@ function topView (home) {
 function viNumSender(viNum) {
 	
 	//setCookie('viNum',viNum);
-	console.log(viNum);
 	let param='viNum='+viNum;
+	console.log(param);
 	
 	  $.ajax({
 		url:'../youWatchServlet',
 		data: param,
-		type:'get',
+		type:'post',
 		dataType:'json',
 		success: function (result) {
-			console.log(result.viNum);
+		
+			console.log('result:'+result.viNum);
 			window.location.href="youwatching.jsp?viNum="+result.viNum;
 		},
 		error: function (reject) {

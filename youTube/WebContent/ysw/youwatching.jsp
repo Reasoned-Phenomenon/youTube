@@ -35,9 +35,6 @@
 
 <body>
 
-	<%
-	String viNum = request.getParameter("viNum");
-	%>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -84,16 +81,7 @@
                         <div class="section-title">
                             <h5>Reviews</h5>
                         </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="../template/img/anime/review-1.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
-                            </div>
-                        </div>
+                        
                         </div>
                     <div class="anime__details__form">
                         <div class="section-title">
@@ -146,17 +134,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="js/you-watch.js"></script>
     
     <script>
-        
+    
+	<%
+	String viNum = request.getParameter("viNum");
+	%>
+	let viNum = <%=viNum%>
+	
     $(document).ready(function () {
-    	
+    	console.log('vi:'+viNum);
     	console.log(document.cookie);
     	
 		makeHeader ();
         makeFooter ();
 		profile();
 		
-    	showList();
-    	setVideo();
+    	showList(viNum);
+    	setVideo(viNum);
+    	getComment(viNum);
         
     })
     

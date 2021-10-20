@@ -29,13 +29,12 @@ public class youWatchServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Gson gson = new GsonBuilder().create();
 		youDAO dao = new youDAO();
+		youHomeVO vo = new youHomeVO();
 		
-		String vi = request.getParameter("viNum");
-		int viNum = Integer.parseInt(vi);
-		System.out.println(viNum);
-		
-		out.println(gson.toJson(dao.getVideo(viNum)));
-		
+		String num = request.getParameter("viNum");
+		int viNum = Integer.parseInt(num);
+		vo = dao.getVideo(viNum);
+		out.println(gson.toJson(vo));
 		
 	}
 

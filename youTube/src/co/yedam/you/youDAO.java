@@ -222,12 +222,13 @@ public List<youCommentVO> showComment(int viNum) {
 		connect();
 		
 		List<youCommentVO> list = new ArrayList<>();
-		String sql = "SELECT * FROM cmt ORDER BY 2";
 		
 		try {
 			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			psmt = conn.prepareStatement("SELECT * FROM cmt WHERE vi_num = ? ORDER BY 2");
+			psmt.setInt(1, viNum);
+			
+			rs = psmt.executeQuery();
 			
 			while ( rs.next() ) {
 				
@@ -240,6 +241,7 @@ public List<youCommentVO> showComment(int viNum) {
 				vo.setCmtDate(rs.getString("cmt_date"));
 
 				list.add(vo);
+				
 			}
 			
 		} catch (SQLException e) {
@@ -255,7 +257,6 @@ public List<youCommentVO> showComment(int viNum) {
 	public youHomeVO getVideo (int viNum) {
 		
 		connect();
-		
 		youHomeVO vo = new youHomeVO();	
 		int beforeViewNum = 0;
 		
