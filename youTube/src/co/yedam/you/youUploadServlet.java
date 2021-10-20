@@ -33,7 +33,10 @@ public class youUploadServlet extends HttpServlet {
 		youDAO dao = new youDAO();
 			
 		ServletContext context = getServletContext();
-		String saveDir = context.getRealPath("upload");
+		
+		//String saveDir = context.getRealPath("upload");
+		
+		String saveDir= "c://users/admin/git/youTube/youTube/webContent/upload/";
 		int maxSize = 1024 * 1024 *30; //30메가
 		String encoding = "UTF-8";
 		

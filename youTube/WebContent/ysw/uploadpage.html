@@ -79,8 +79,8 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
-                            <img src="../template/img/logo.png" alt="">
+                        <a href="homepage.html">
+                            <img src="../upload/JORDY.gif" height="60px" alt="">
                         </a>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="footer__logo">
-                            <a href="homepage.html"><img src="../template/img/logo.png" alt=""></a>
+                            <a href="homepage.html"><img src="../upload/JORDY.gif" height="60px" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -215,26 +215,54 @@
     			
     	});
         
-        function profile () {
-        	
+    	function profile () {
+    		
+    		let email, emailA, emailId;
+    		
     		if (document.cookie) {
     			
+    			email = getCookie('email');
+    			
+    			if ( email ) {
+    				
+    			emailA = email.split('@');
+    			emailId = emailA[0];
+    			
+    			}
+    			
+                let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
+    		
+                if (emailId) {
+                    
+                    $('#profile').html('');
+                    $('#profile').append( $('<a />').append( $('<h6 />').html(emailId+'님').css('color','red') ) );
+                    $('#profile').append(logoutBtn);
+                    
+                }
+                
+                
+                
+    		}
+    		
+    	}
+    	
+    	function getCookie (cname) {
+
     		let cookies = document.cookie.split('; ');
-    		let email = cookies[0].split('=');
-    		let name = email[1].split('@');
-    		let id = name[0];
-    		
-    		let logoutBtn = $('<button />').attr('onclick','logout()').html('<i class="material-icons">logout</i>');
-    		
-    		if (id) {
-    			
-    			$('#profile').html('');
-    			$('#profile').append( $('<a />').append( $('<h6 />').html(id+'님').css('color','red') ) );
-    			$('#profile').append(logoutBtn);
-    			
+
+    		for (let i = 0 ; i < cookies.length ; i ++) {
+
+    			if(cookies[i].indexOf(cname) === 0) {
+
+    				let result = cookies[i].substring(cname.length+1);
+    				return result;
+
+    			}
+
     		}
-    		}
-    		
+
+    		return null;
+
     	}
 
     	function logout () {
@@ -262,14 +290,14 @@
             
             if (document.cookie) {
     			
-        		let cookies = document.cookie.split(';'); 
+        		//let cookies = document.cookie.split(';'); 
         		//let email = cookies[0].split('=');
         		//let name = email[1].split('@');
         		//id = name[0];
         		
-        		let authorPart = cookies[1].split('=');
-        		author = authorPart[1];
-        		
+        		//let authorPart = cookies[1].split('=');
+        		//author = authorPart[1];
+        		author = getCookie('author');
         		console.log(author);
         		        		
         	} 
@@ -299,7 +327,9 @@
                 success: function (result) {
                     console.log(result);
                     // 입력칸 비우기
-                    $('#frm>input').val();
+                    $('#titleInput').val();
+                    $('#thInp').val();
+                    $('#viInp').val();
 
                     alert(result.title+' 업로드 성공');
                 },

@@ -87,7 +87,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="homepage.html">
-                            <img src="../template/img/logo.png" alt="">
+                            <img src="../upload/JORDY.gif" height="60px" alt="">
                         </a>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="footer__logo">
-                        <a href="homepage.html"><img src="../template/img/logo.png" alt=""></a>
+                        <a href="homepage.html"><img src="../upload/JORDY.gif" height="60px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">

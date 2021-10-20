@@ -392,8 +392,8 @@
         let pi = $('<div />').addClass('product__item');
             //bg
             let bg = $('<div />').addClass('product__item__pic set-bg');
-                $(bg).attr('data-setbg',"../template/thumbnail/"+home.tnTitle); // 섬네일-main.js에서 일괄적용.
-                $(bg).css('background-image', 'url(../template/thumbnail/'+home.tnTitle+')'); // 섬네일(수동)
+                $(bg).attr('data-setbg',"../upload/"+home.tnTitle); // 섬네일-main.js에서 일괄적용.
+                $(bg).css('background-image', 'url(../upload/'+home.tnTitle+')'); // 섬네일(수동)
                 //$(bg).html('<a href="'+'#'+'"></a>');             //영상페이지 주소 넣어서 영상클릭시에도 이동하게하기
                 let ep = $('<div />').addClass('ep');
                     ep.html('10/10');                                                   //회차정보, 임의로 넣어둠
@@ -410,7 +410,7 @@
                     $('<li />').html('소분류')                                              //분류2
                 );
                 let h5 = $('<h5 />').append(
-                    $('<a />').attr('href', '#').html(home.title)               //영상페이지 주소,제목 넣기
+                    $('<a />').attr('onclick', 'viNumSender('+home.viNum+')').html(home.title)               //영상페이지 주소,제목 넣기
                 );
 
     //구조
@@ -437,7 +437,7 @@ function topView (home) {
     //생성
         //sv
      let sv = $('<div />').addClass('product__sidebar__view__item set-bg mix').attr('data-setbg','../template/img/sidebar/tv-1.jpg');
-     $(sv).css('background-image', 'url(../template/thumbnail/'+home.tnTitle+')');
+     $(sv).css('background-image', 'url(../upload/'+home.tnTitle+')');
 
         //ep
         let ep = $('<div />').addClass('ep');
