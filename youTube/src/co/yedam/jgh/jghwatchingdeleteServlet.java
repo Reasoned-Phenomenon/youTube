@@ -44,7 +44,7 @@ public class jghwatchingdeleteServlet extends HttpServlet {
 	    	  return;
 	    	  
 	      } else {
-	    	  out.println("{\"retcode\":\"success\":\"cmtNum\"}"+ cmtNum);
+	    	  out.println("{\"retcode\":\"success\",\"cmtNum\":\""+cmtNum+"\"}");
 	      }
 	      
 	     // dao.deleteComment(cmtNum);
