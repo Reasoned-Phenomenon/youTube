@@ -104,11 +104,11 @@ function setVideo(viNum) {
             
             $('#viTitleSpan').text(data.title); // 영상 제목
             
-            let vi = $('<video controls preload playsinline/>').attr('src','../template/videos/title'+data.viNum+'.mp4'); //영상 주소
+            let vi = $('<video controls preload playsinline/>').attr('src','../upload/title'+data.viNum+'.mp4'); //영상 주소
             
             $(vi).attr('width','1000px');
             $(vi).attr('height','500px');
-            $(vi).attr('poster','../template/thumbnail/'+data.tnTitle); //섬네일
+            $(vi).attr('poster','../upload/'+data.tnTitle); //섬네일
             
             $('.anime__video__player').append(vi);
         },
