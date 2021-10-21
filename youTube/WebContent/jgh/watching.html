@@ -183,7 +183,8 @@
                                 <img src="../template/img/anime/review-1.jpg" alt="">
                             </div>
                             <div class="anime__review__item__text">
-                                <h6>Chris Curry - <span>1 Hour ago</span><button class="material-icons-sharp" style="float:right">x</button></h6>
+                                <h6>Chris Curry - <span>1 Hour ago</span><button class="material-icons-sharp" style="float:right">x</button>
+                                <button class="material-icons-sharp" style="float:right">v</button></h6> 
                                 <p>whachikan Just noticed that someone categorized this as belonging to the genre
                                 "demons" LOL</p>
                             </div>
@@ -193,7 +194,8 @@
                                 <img src="../template/img/anime/review-2.jpg" alt="">
                             </div>
                             <div class="anime__review__item__text">
-                                <h6>Lewis Mann - <span>5 Hour ago</span><button class="material-icons-sharp" style="float:right">x</button></h6>
+                                <h6>Lewis Mann - <span>5 Hour ago</span><button class="material-icons-sharp" style="float:right">x</button>
+                                 <button class="material-icons-sharp" style="float:right">v</button></h6>
                                 <p>Finally it came out ages ago</p>
                             </div>
                         </div>
@@ -309,11 +311,47 @@
       
       console.log(span2);
       
+      // v 수정버튼 
+      let span3 = document.createElement('button');
+      span3.className = "material-icons-sharp";
+      span3.innerText='v';
+      span3.id = "vspan";
+      
+      span3.setAttribute('onclick', 'textUpdate('+comment.cmtNum+')');  // 
+      span3.setAttribute('style','float:right'); // 위치.
+   
+      h6.appendChild(span3);
+      
+      console.log(span3);
+      
       
       let p = document.createElement('p');
-      p.innerText = comment.content;      
-      console.log(p);
+      p.innerText = comment.content; 
       
+      // 수정 화면 창.
+      
+      let p2 = document.createElement('input');
+      let modbtn = document.createElement('button');
+      modbtn.className = "material-icons-sharp";
+      modbtn.innerText ='m';
+      modbtn.setAttribute('onclick', 'modComment('+comment.cmtNum+')');
+      
+      let cancelbtn = document.createElement('button');
+      cancelbtn.className = "material-icons-sharp";
+      cancelbtn.innerText ='c';
+      cancelbtn.setAttribute('onclick', 'cancelComment('+comment.cmtNum+')');
+      
+      let p3 = document.createElement('p');
+      p3.id = "p"+comment.cmtNum ;
+      p3.appendChild(p2);
+      p3.appendChild(modbtn);
+      p3.appendChild(cancelbtn);
+      
+      p3.style.display ='none';
+      h6.appendChild(p3);
+      
+      
+      // 
       h6.appendChild(span);
       
       innerDiv.appendChild(h6);
@@ -327,8 +365,9 @@
       
       return outDiv;
    } 
- 
-   let xhtp = new XMLHttpRequest();
+   
+ function tt () {
+    let xhtp = new XMLHttpRequest();
    xhtp.open('get', '../jghwatchingServlet');
    xhtp.send();
   
@@ -344,7 +383,10 @@
          target[0].appendChild(makeCommentDiv(datum));
       }
    };
-   
+ }
+ 
+ tt();
+ 
    // 댓글등록 버튼.
    function textAdd (event) {
       
@@ -368,13 +410,15 @@
             //console.log(commentDiv);
            
             $('.anime__details__review').append(commentDiv);
-            
+            console.log($('textarea'));
+            $('textarea').val('');  // 댓글입력 하고 나서 댓글입력 했던 내용은 사라지게 함.
             
          },
          error: function (reject){
             console.log("실패");
          }
       });
+      
       
    }
     
@@ -405,6 +449,46 @@
 	}
 	
   }  
+   
+   // 댓글 수정 버튼 .=> 수정 화면창 뜨게 나오게 하는 함수 만들기.
+   function textUpdate (cmtNum) {
+	  
+	   let r = document.getElementById('p'+cmtNum);
+	   
+	   r.style.display = "block"; // 실행되었을 때 화면에서 보이게 함.
+
+   } 
+   
+   // 댓글 수정 변경.
+   function modComment (cmtNum) {
+	   
+	   let r = document.getElementById('p'+cmtNum);
+	   
+	   
+	   let content = document.getElementById('p'+cmtNum).children[0].value;
+	   console.log(content); // 
+	   
+	   let xhtp = new XMLHttpRequest();
+	   xhtp.onload = function() {
+	 
+	  // let data = JSON.parse(xhtp.responseText);
+		
+	    
+	   tt();
+	  
+		}
+	   
+	   xhtp.open('get', '../jghwatchingupdateServlet');
+	   xhtp.send ('cmtNum=' + cmtNum  + '&content=' + content);
+   }
+   
+   // 댓글 수정 취소.
+   function cancelComment (cmtNum) {
+	   
+       let r = document.getElementById('p'+cmtNum);
+	   
+	   r.style.display = "none";
+   }
    
    
  </script>

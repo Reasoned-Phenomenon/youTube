@@ -121,7 +121,29 @@ public class jghwatchingDAO extends DAO {
 			disconnect();
 		}
 		
+	}
 	
+	// 댓글 수정.
+	public jghwatchinglVO updateComment (jghwatchinglVO comment) {
+		 connect();
+		 String sql = "update commentboard set content=? where cmt_num=?";
+		 
+		 try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, comment.getContent());
+			psmt.setInt(2, comment.getCmtNum());
+			
+			int r = psmt.executeUpdate();
+			System.out.println(r + "건 변경 되었습니다.");
+			return comment;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			disconnect();
+		}
+		
 	}
 
 }
