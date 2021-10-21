@@ -395,7 +395,7 @@
       let comment = document.getElementsByTagName('textarea')[0].value;
       console.log(comment);
       
-      let author = "qwerty";  // 나중에 아이디값이랑 같이 넘기기.
+      let author = "허수아비";  // 나중에 아이디값이랑 같이 넘기기.
       let param = "author="+author+"&content="+comment;
       
       $.ajax({
@@ -463,23 +463,26 @@
    function modComment (cmtNum) {
 	   
 	   let r = document.getElementById('p'+cmtNum);
-	   
+	   console.log(r);
 	   
 	   let content = document.getElementById('p'+cmtNum).children[0].value;
 	   console.log(content); // 
 	   
 	   let xhtp = new XMLHttpRequest();
 	   xhtp.onload = function() {
-	 
-	  // let data = JSON.parse(xhtp.responseText);
-		
-	    
+	   
+	 /*  let data = JSON.parse(xhtp.responseText);
+	   let commentDiv = makeCommentDiv(data);
+	   let listDiv = document.getElementById("p"+comment.cmtNum);
+	   let oldCommentDiv = document.getElementById(id);
+	   listDiv.repalceChild(commentDiv, oldCommentDiv); */
+		   
 	   tt();
 	  
 		}
 	   
 	   xhtp.open('get', '../jghwatchingupdateServlet');
-	   xhtp.send ('cmtNum=' + cmtNum  + '&content=' + content);
+	   xhtp.send ('cmtNum=' + cmtNum + '&content'+ content); // 넘기는 값이 잘 못된거 같음. 확인해보기.
    }
    
    // 댓글 수정 취소.

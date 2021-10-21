@@ -18,7 +18,7 @@ select * from commentboard;
 commit;
 
 delete from commentboard
-where num >=2;
+where cmt_num >=2;
 
 drop table commentboard;
 
