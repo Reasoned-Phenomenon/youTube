@@ -34,6 +34,7 @@ public class youWatchServlet extends HttpServlet {
 		String num = request.getParameter("viNum");
 		int viNum = Integer.parseInt(num);
 		vo = dao.getVideo(viNum);
+		System.out.println(vo.getViewNum());
 		out.println(gson.toJson(vo));
 		
 	}

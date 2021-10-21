@@ -75,21 +75,45 @@
                     
                 </div>
             </div>
+            <!-- 댓글부분 -->
             <div class="row">
                 <div class="col-lg-8">
                     <div class="anime__details__review">
                         <div class="section-title">
-                            <h5>Reviews</h5>
+                            <h5>댓글</h5>
+                        </div>
+                        <div class="anime__review__item">
+                            <div class="anime__review__item__pic">
+                                <img src="../template/img/anime/review-1.jpg" alt="">
+                            </div>
+                            <div class="anime__review__item__text">
+                                <h6>Chris Curry - <span>1 Hour ago</span><button class="material-icons-sharp" style="float:right">x</button>
+                                <button class="material-icons-sharp" style="float:right">v</button></h6> 
+                                <p>whachikan Just noticed that someone categorized this as belonging to the genre
+                                "demons" LOL</p>
+                            </div>
+                        </div>
+                        <div class="anime__review__item">
+                            <div class="anime__review__item__pic">
+                                <img src="../template/img/anime/review-2.jpg" alt="">
+                            </div>
+                            <div class="anime__review__item__text">
+                                <h6>Lewis Mann - <span>5 Hour ago</span><button class="material-icons-sharp" style="float:right">x</button>
+                                 <button class="material-icons-sharp" style="float:right">v</button></h6>
+                                <p>Finally it came out ages ago</p>
+                            </div>
                         </div>
                         
-                        </div>
+                    </div>
                     <div class="anime__details__form">
                         <div class="section-title">
                             <h5>Your Comment</h5>
                         </div>
                         <form action="#">
                             <textarea placeholder="Your Comment"></textarea>
-                            <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                            
+                            <button type="submit" onclick="textAdd(event)"><i class="fa fa-location-arrow"></i> 댓글등록</button>
+                            
                         </form>
                     </div>
                 </div>
@@ -97,6 +121,7 @@
         </div>
     </section>
     <!-- Anime Section End -->
+
 
 <!-- Footer Section Begin -->
 <footer class="footer">
@@ -132,8 +157,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/you-hf.js"></script>
 	<script src="js/you-login.js"></script>
 	<script src="js/you-watch.js"></script>
+    <!-- jgh -->
+    <script src="js/jgh.js"></script>
     
     <script>
+    
     
 	<%
 	String viNum = request.getParameter("viNum");
@@ -147,10 +175,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		makeHeader ();
         makeFooter ();
 		profile();
-		
-    	showList(viNum);
     	setVideo(viNum);
-    	getComment(viNum);
+		
+    	//showList(viNum);
+    	//getComment(viNum);
+    	
+		tt();
+		
         
     })
     

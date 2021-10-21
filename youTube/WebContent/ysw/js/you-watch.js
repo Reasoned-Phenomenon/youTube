@@ -1,3 +1,4 @@
+
 function makeDiv(cmt) {
     	
     let outDiv = $('<div />').addClass('anime__review__item');

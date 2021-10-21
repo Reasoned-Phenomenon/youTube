@@ -279,7 +279,9 @@ public List<youCommentVO> showComment(int viNum) {
 			vo.setCommentCnt(rs.getInt("comment_cnt"));	
 			
 			//조회수 +1
+			
 			beforeViewNum = rs.getInt("view_num");
+			System.out.println(beforeViewNum);
 			vo.setViewNum(beforeViewNum+1);
 			}
 			
